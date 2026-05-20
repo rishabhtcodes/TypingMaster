@@ -285,7 +285,7 @@ export default function App() {
       </main>
 
       <footer className="footer-credits glass-panel">
-        <p>Built with <a href="https://rishabhtcodes.vercel.app"><i style={{ color: '#6c5757ff' }}>RISHABHTCODES</i></a> as a State-of-the-Art typing speed tutor.</p>
+        <p>Built with <a href="https://rishabhtcodes.vercel.app" style={{ textDecoration: 'none', fontWeight: 'bold' }}><i style={{ color: '#6c5757ff' }}>RISHABHTCODES</i></a> as a State-of-the-Art typing speed tutor.</p>
       </footer>
     </div>
   );
