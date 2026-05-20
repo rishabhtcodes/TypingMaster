@@ -10,7 +10,6 @@ import ThemeSelector from './components/ThemeSelector';
 import Controls from './components/Controls';
 import type { TestMode, TextCategory } from './components/Controls';
 import { 
-  Keyboard, 
   BarChart2, 
   RotateCw, 
   Play, 
@@ -122,9 +121,7 @@ export default function App() {
       {/* 1. Integrated Premium Top Navigation Bar */}
       <header className="app-header glass-panel">
         <div className="header-logo" onClick={() => { setActiveTab('practice'); reset(); }}>
-          <div className="logo-icon">
-            <Keyboard size={20} />
-          </div>
+          <img src="/logo.png" className="logo-image" alt="TypingMaster Pro Logo" />
           <h1>TypingMaster <span className="logo-badge">Pro</span></h1>
         </div>
 
