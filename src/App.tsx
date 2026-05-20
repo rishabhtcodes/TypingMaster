@@ -9,12 +9,12 @@ import Dashboard from './components/Dashboard';
 import ThemeSelector from './components/ThemeSelector';
 import Controls from './components/Controls';
 import type { TestMode, TextCategory } from './components/Controls';
-import { 
-  BarChart2, 
-  RotateCw, 
-  Play, 
-  Percent, 
-  Clock, 
+import {
+  BarChart2,
+  RotateCw,
+  Play,
+  Percent,
+  Clock,
   AlertTriangle,
   Award,
   Zap
@@ -117,7 +117,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      
+
       {/* 1. Integrated Premium Top Navigation Bar */}
       <header className="app-header glass-panel">
         <div className="header-logo" onClick={() => { setActiveTab('practice'); reset(); }}>
@@ -126,13 +126,13 @@ export default function App() {
         </div>
 
         <nav className="header-nav">
-          <button 
+          <button
             className={`btn-nav-tab ${activeTab === 'practice' ? 'active' : ''}`}
             onClick={() => setActiveTab('practice')}
           >
             <Play size={14} /> Practice
           </button>
-          <button 
+          <button
             className={`btn-nav-tab ${activeTab === 'dashboard' ? 'active' : ''}`}
             onClick={() => setActiveTab('dashboard')}
           >
@@ -151,7 +151,7 @@ export default function App() {
           <Dashboard onStartPractice={() => setActiveTab('practice')} />
         ) : (
           <div className="practice-screen">
-            
+
             {/* Live active indicator HUD (Fades in focus mode) */}
             <div className={`live-hud animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
               <div className="hud-pill font-mono">
@@ -176,7 +176,7 @@ export default function App() {
             </div>
 
             {/* The Monospace word display container */}
-            <WordDisplay 
+            <WordDisplay
               text={promptText}
               input={input}
               isStarted={isStarted}
@@ -190,7 +190,7 @@ export default function App() {
             </div>
 
             {/* Upgraded Control presets HUD */}
-            <Controls 
+            <Controls
               mode={testMode}
               onModeChange={setTestMode}
               category={category}
@@ -284,7 +284,7 @@ export default function App() {
       </main>
 
       <footer className="footer-credits glass-panel">
-        <p>Built with ❤️ as a State-of-the-Art typing speed tutor.</p>
+        <p>Built with <a href="https://github.com/rishabhtcodes" target="_blank" rel="noopener noreferrer"><b><i>RISHABHTCODES</i></b></a> as a State-of-the-Art typing speed tutor.</p>
       </footer>
     </div>
   );
