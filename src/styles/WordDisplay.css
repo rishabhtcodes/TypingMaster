@@ -1,0 +1,130 @@
+.word-display-container {
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  padding: 2.5rem;
+  margin: 1.5rem 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.word-display-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.word-display-text {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.01em;
+  white-space: pre-wrap;
+  word-break: break-all;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.char-item {
+  position: relative;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  border-radius: 2px;
+}
+
+/* Future Character */
+.char-future {
+  color: var(--text-muted);
+}
+
+/* Correctly Typed Character */
+.char-correct {
+  color: var(--text-correct);
+  animation: typed-correct 0.3s ease;
+}
+
+/* Incorrectly Typed Character */
+.char-incorrect {
+  color: var(--text-incorrect);
+  border-bottom: 2px solid var(--text-incorrect);
+  background-color: rgba(239, 68, 68, 0.12);
+  animation: typed-incorrect 0.3s ease;
+}
+
+.char-space.char-incorrect {
+  border-bottom: 2px solid var(--text-incorrect);
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Active character highlighted */
+.char-active {
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Caret Cursor implementation */
+.cursor-caret {
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 2px;
+  height: 80%;
+  background-color: var(--caret-color);
+  box-shadow: 0 0 8px var(--caret-color);
+  animation: pulse-caret 1s infinite;
+}
+
+/* Stop blinking while typing */
+.word-display-text:focus-within .cursor-caret,
+.word-display-container:hover .cursor-caret {
+  animation: none;
+}
+
+.char-space {
+  margin: 0;
+  display: inline-block;
+  min-width: 0.5rem;
+}
+
+/* Start Overlay message */
+.start-typing-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  pointer-events: none;
+  animation: float-up 0.5s 0.2s forwards;
+}
+
+.word-display-container:not(:focus-within) .start-typing-overlay {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .word-display-container {
+    padding: 1.5rem;
+  }
+  .word-display-text {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    max-height: 140px;
+  }
+}

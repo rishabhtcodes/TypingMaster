@@ -1,0 +1,74 @@
+.keyboard-visualization {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.keyboard-key {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  transition: all 0.15s ease;
+  cursor: default;
+}
+
+.keyboard-key-relevant {
+  background-color: var(--color-gold-500);
+  border-color: var(--color-gold-600);
+  color: #0d152b;
+}
+
+.keyboard-key-inactive {
+  background-color: var(--color-navy-500);
+  border-color: var(--color-navy-400);
+  color: var(--color-slate-400);
+}
+
+.keyboard-key-tapped {
+  background-color: var(--color-gold-500);
+  border-color: var(--color-gold-400);
+  color: #0d152b;
+  transform: scale(0.95);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: tap-pulse 0.3s ease-out;
+}
+
+@keyframes tap-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(255, 184, 77, 0.7);
+  }
+  70% {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 8px rgba(255, 184, 77, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(255, 184, 77, 0);
+  }
+}
+
+.keyboard-key:disabled {
+  opacity: 1;
+}
+
+.keyboard-label {
+  color: var(--color-gold-500);
+  font-weight: bold;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}

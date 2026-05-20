@@ -1,0 +1,86 @@
+/* TypingMaster Pro Color Themes */
+
+/* 1. Carbon Dark (Default) - Dark, professional, code-like */
+.theme-carbon {
+  --bg-color: #121214;
+  --bg-surface: #1e1e24;
+  --bg-surface-glass: rgba(30, 30, 36, 0.7);
+  --text-main: #e2e8f0;
+  --text-muted: #64748b;
+  --text-correct: #38bdf8;
+  --text-incorrect: #ef4444;
+  --primary-color: #ff9f1c;
+  --primary-glow: rgba(255, 159, 28, 0.4);
+  --secondary-color: #2ec4b6;
+  --caret-color: #ff9f1c;
+  --border-color: rgba(255, 159, 28, 0.15);
+  --border-hover: rgba(255, 159, 28, 0.4);
+}
+
+/* 2. Cyberpunk Glow - Neon retro-futuristic dark mode */
+.theme-cyberpunk {
+  --bg-color: #0c0813;
+  --bg-surface: #180f2b;
+  --bg-surface-glass: rgba(24, 15, 43, 0.7);
+  --text-main: #f3e8ff;
+  --text-muted: #704d9c;
+  --text-correct: #39ff14; /* Toxic neon green */
+  --text-incorrect: #ff0055; /* Neon pinkish red */
+  --primary-color: #ff007f; /* Hot magenta */
+  --primary-glow: rgba(255, 0, 127, 0.5);
+  --secondary-color: #00ffff; /* Neon cyan */
+  --caret-color: #00ffff;
+  --border-color: rgba(255, 0, 127, 0.2);
+  --border-hover: rgba(0, 255, 255, 0.5);
+}
+
+/* 3. Dracula Night - Classic dark high-contrast mode */
+.theme-dracula {
+  --bg-color: #282a36;
+  --bg-surface: #343746;
+  --bg-surface-glass: rgba(52, 55, 70, 0.75);
+  --text-main: #f8f8f2;
+  --text-muted: #6272a4;
+  --text-correct: #50fa7b; /* Bright green */
+  --text-incorrect: #ff5555; /* Pastel red */
+  --primary-color: #bd93f9; /* Dracula purple */
+  --primary-glow: rgba(189, 147, 249, 0.45);
+  --secondary-color: #8be9fd; /* Dracula cyan */
+  --caret-color: #ff79c6; /* Pink */
+  --border-color: rgba(189, 147, 249, 0.2);
+  --border-hover: rgba(255, 121, 198, 0.5);
+}
+
+/* 4. Nordic Mint - Calm, cool, frosted slate */
+.theme-nordic {
+  --bg-color: #1e293b;
+  --bg-surface: #0f172a;
+  --bg-surface-glass: rgba(15, 23, 42, 0.7);
+  --text-main: #f1f5f9;
+  --text-muted: #475569;
+  --text-correct: #2dd4bf; /* Mint teal */
+  --text-incorrect: #fda4af; /* Rose */
+  --primary-color: #a7f3d0; /* Soft emerald */
+  --primary-glow: rgba(167, 243, 208, 0.35);
+  --secondary-color: #38bdf8; /* Sky blue */
+  --caret-color: #34d399;
+  --border-color: rgba(52, 211, 153, 0.15);
+  --border-hover: rgba(52, 211, 153, 0.4);
+}
+
+/* 5. Sakura Blossom - Soft cream/pink elegant light mode */
+.theme-sakura {
+  --bg-color: #fcf7f7;
+  --bg-surface: #ffffff;
+  --bg-surface-glass: rgba(255, 255, 255, 0.85);
+  --text-main: #4a3737;
+  --text-muted: #c9b1b1;
+  --text-correct: #dd5e89; /* Warm dark pink */
+  --text-incorrect: #e03a3e; /* Warm red */
+  --primary-color: #f7bb97; /* Warm peach */
+  --primary-glow: rgba(247, 187, 151, 0.4);
+  --secondary-color: #dd5e89; /* Soft rose */
+  --caret-color: #dd5e89;
+  --border-color: rgba(221, 94, 137, 0.2);
+  --border-hover: rgba(221, 94, 137, 0.5);
+}

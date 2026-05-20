@@ -1,0 +1,108 @@
+.stats-chart-wrapper {
+  width: 100%;
+  max-width: 900px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: var(--radius-md);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.chart-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legend-item.wpm .legend-dot {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 6px var(--primary-glow);
+}
+
+.legend-item.raw .legend-dot {
+  border: 1px dashed var(--text-muted);
+}
+
+.demo-badge {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.chart-svg-container {
+  width: 100%;
+  position: relative;
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart-grid-line {
+  stroke: rgba(255, 255, 255, 0.035);
+  stroke-width: 1;
+}
+
+.chart-axis-text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  fill: var(--text-muted);
+}
+
+.wpm-axis {
+  text-anchor: end;
+}
+
+.time-axis {
+  text-anchor: middle;
+}
+
+.chart-main-line {
+  filter: drop-shadow(0px 2px 6px var(--primary-glow));
+}
+
+.chart-error-node {
+  animation: pulse-caret 1s infinite alternate;
+}
+
+@media (max-width: 768px) {
+  .stats-chart-wrapper {
+    padding: 1rem;
+  }
+  .chart-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
