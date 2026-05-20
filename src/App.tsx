@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTypingEngine } from './hooks/useTypingEngine';
-import { Bold } from "lucide-react"
 import { getRandomText } from './data/texts';
 import { HistoryTracker } from './utils/HistoryTracker';
 import type { SwitchType } from './utils/SoundManager';
@@ -19,7 +18,6 @@ import {
   AlertTriangle,
   Award,
   Zap,
-  Bold
 } from 'lucide-react';
 import './styles/App.css';
 
