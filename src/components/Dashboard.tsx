@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { HistoryTracker, TestAttempt } from '../utils/HistoryTracker';
+import { HistoryTracker } from '../utils/HistoryTracker';
+import type { TestAttempt } from '../utils/HistoryTracker';
 import { 
   Trophy, 
   Percent, 

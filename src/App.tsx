@@ -2,17 +2,17 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTypingEngine } from './hooks/useTypingEngine';
 import { getRandomText } from './data/texts';
 import { HistoryTracker } from './utils/HistoryTracker';
-import { SwitchType } from './utils/SoundManager';
+import type { SwitchType } from './utils/SoundManager';
 import WordDisplay from './components/WordDisplay';
 import StatsChart from './components/StatsChart';
 import Dashboard from './components/Dashboard';
 import ThemeSelector from './components/ThemeSelector';
-import Controls, { TestMode, TextCategory } from './components/Controls';
+import Controls from './components/Controls';
+import type { TestMode, TextCategory } from './components/Controls';
 import { 
   Keyboard, 
   BarChart2, 
   RotateCw, 
-  ChevronRight, 
   Play, 
   Percent, 
   Clock, 

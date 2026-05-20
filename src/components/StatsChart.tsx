@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { WpmSnapshot } from '../hooks/useTypingEngine';
+import type { WpmSnapshot } from '../hooks/useTypingEngine';
 import '../styles/StatsChart.css';
 
 interface StatsChartProps {

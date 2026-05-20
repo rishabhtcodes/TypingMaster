@@ -8,7 +8,8 @@ import {
   EyeOff, 
   Sparkles 
 } from 'lucide-react';
-import { SwitchType, SoundManager } from '../utils/SoundManager';
+import { SoundManager } from '../utils/SoundManager';
+import type { SwitchType } from '../utils/SoundManager';
 import '../styles/Controls.css';
 
 export type TestMode = 'time' | 'words' | 'zen';
