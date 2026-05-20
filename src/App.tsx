@@ -17,7 +17,8 @@ import {
   Clock,
   AlertTriangle,
   Award,
-  Zap
+  Zap,
+  Bold
 } from 'lucide-react';
 import './styles/App.css';
 
@@ -284,7 +285,7 @@ export default function App() {
       </main>
 
       <footer className="footer-credits glass-panel">
-        <p>Built with <a href="https://github.com/rishabhtcodes" target="_blank" rel="noopener noreferrer"><b><i>RISHABHTCODES</i></b></a> as a State-of-the-Art typing speed tutor.</p>
+        <p>Built with <a href="https://rishabhtcodes.vercel.app"><i style={{ color: '#808080ff' }}>RISHABHTCODES</i></a> as a State-of-the-Art typing speed tutor.</p>
       </footer>
     </div>
   );
