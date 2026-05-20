@@ -32,12 +32,6 @@
   width: auto;
   object-fit: contain;
   border-radius: 6px;
-  box-shadow: 0 0 12px var(--primary-glow);
-  transition: transform var(--transition-fast);
-}
-
-.logo-image:hover {
-  transform: scale(1.05);
 }
 
 .header-logo h1 {
