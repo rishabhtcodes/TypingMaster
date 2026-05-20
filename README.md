@@ -1,31 +1,31 @@
-# <img src="public/logo.png" alt="TypingMaster Pro Logo" width="32" height="32" style="border-radius: 6px; vertical-align: middle; margin-bottom: 4px; margin-right: 8px;" /> TypingMaster Pro — Sleek, Minimalist & Scientific Typing Coach
+# TypingMaster Pro — Sleek, Minimalist & Scientific Typing Coach
 
 **TypingMaster Pro** is a modern, high-fidelity typing practice and analytics web application built with **React**, **TypeScript**, **Vite**, and premium **Vanilla CSS**. Reminiscent of professional typing applications like Monkeytype, it combines minimalist aesthetics, zero-latency mechanical sound synthesis, real-time interactive SVG line graphs, and local storage historical dashboards to offer an unparalleled typing improvement experience.
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🎨 Premium HSL-Tailored Color Themes
+### Premium HSL-Tailored Color Themes
 Dynamically switch between 5 professionally calibrated, beautiful theme presets with full CSS glow transitions and card glassmorphism:
-*   🏁 **Carbon Dark** — Sleek slate grays with warm tangerine accents.
-*   ⚡ **Cyberpunk Glow** — Pure dark neon night featuring cyan carets and hyper-vibrant feedback.
-*   🧛 **Dracula Night** — Classic deep purple with pastel green keys and neon pink highlights.
-*   🌸 **Sakura Blossom** — Premium warm cream light mode with elegant cherry-blossom rose accents.
-*   ❄️ **Nordic Mint** — Clean, frosted dark arctic slate with glowing mint-teal active elements.
+*   **Carbon Dark** — Sleek slate grays with warm tangerine accents.
+*   **Cyberpunk Glow** — Pure dark neon night featuring cyan carets and hyper-vibrant feedback.
+*   **Dracula Night** — Classic deep purple with pastel green keys and neon pink highlights.
+*   **Sakura Blossom** — Premium warm cream light mode with elegant cherry-blossom rose accents.
+*   **Nordic Mint** — Clean, frosted dark arctic slate with glowing mint-teal active elements.
 
-### 🎵 In-Browser Mechanical Switch Synthesizer
+### In-Browser Mechanical Switch Synthesizer
 Built natively using the HTML5 **Web Audio API** for zero external network calls, zero file-loading lag, and pristine real-time acoustic feedback:
-*   🔵 **Clicky Blue Switches** — High-frequency transient switch clicks paired with a satisfying thud.
-*   🔴 **Quiet Red Switches** — Muted, smooth mid-frequency dampener pops.
-*   🔇 **Mute mode** — For typing in absolute focus.
+*   **Clicky Blue Switches** — High-frequency transient switch clicks paired with a satisfying thud.
+*   **Quiet Red Switches** — Muted, smooth mid-frequency dampener pops.
+*   **Mute mode** — For typing in absolute focus.
 
-### 📊 Real-time SVG Performance Graphs
+### Real-time SVG Performance Graphs
 *   Plots your **Net WPM** and **Raw WPM** second-by-second.
 *   Highlights **mistakes per second** exactly where they occurred.
 *   Complete with custom SVG grid lines, shaded area gradients, and interactive hover highlights.
 
-### ⚙️ Multi-Mode Practice HUD
+### Multi-Mode Practice HUD
 *   **Modes**: **Time Mode** (15s / 30s / 60s countdowns), **Words Mode** (10 / 25 / 50 / 100 word targets), or **Zen Mode** (infinite typing with manual reset).
 *   **Categories**:
     *   **General English** — Balanced core vocabulary.
@@ -33,14 +33,14 @@ Built natively using the HTML5 **Web Audio API** for zero external network calls
     *   **Coding/Syntax** — Realistic code syntax blocks targeting brackets, semi-colons, and variables.
     *   **Layout Training** — Drill-based targets focusing on Home Row, Top Row, Bottom Row, and Number Row.
 
-### 📈 Historical Dashboard & Struggle Keys Heatmap
+### Historical Dashboard & Struggle Keys Heatmap
 *   **Aggregated Metrics**: Top speed WPM, average WPM, average accuracy, total typing time spent, and total practice attempts.
 *   **Worst Keys Heatmap**: Dynamically tracks your error-rate key-by-key and displays a stunning, interactive heatmap to instantly highlight keys you struggle with.
 *   **Attempt Log**: Scrollable chronological logs of all past sessions saved securely in local storage.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 *   **Framework**: [React 18](https://react.dev/) (Functional components + customized hooks)
 *   **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict type-safety, verbatim module syntax)
@@ -50,7 +50,7 @@ Built natively using the HTML5 **Web Audio API** for zero external network calls
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 src/
@@ -82,14 +82,14 @@ src/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 Make sure you have [Node.js](https://nodejs.org/) (v16 or higher) and `npm` installed.
 
 ### Installation & Run
 
-1. Clone or navigate to the directory:
+1. Navigate to the directory:
    ```bash
    cd TypingMaster
    ```
@@ -113,7 +113,7 @@ npm run build
 
 ---
 
-## ⌨️ Advanced Keyboard Shortcuts
+## Keyboard Shortcuts
 
 *   `ESC` — Instantly resets the current practice session.
 *   `TAB` + `Enter` — Quickly cycles or triggers restarts.
@@ -121,6 +121,6 @@ npm run build
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License — feel free to use it for personal training or further extensions!

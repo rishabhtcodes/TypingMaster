@@ -210,7 +210,7 @@ export default function App() {
             {/* Sleek inline tutorial tip */}
             {!isStarted && (
               <p className="practice-tip animate-float">
-                💡 <b>Developer Tip:</b> Switch sound settings to <b>quiet</b> or <b>clicky</b> switches for highly satisfying tactile audio feedback!
+                <b>Developer Tip:</b> Switch sound settings to <b>quiet</b> or <b>clicky</b> switches for highly satisfying tactile audio feedback!
               </p>
             )}
 
@@ -285,7 +285,7 @@ export default function App() {
       </main>
 
       <footer className="footer-credits glass-panel">
-        <p>Built with <a href="https://rishabhtcodes.vercel.app"><i style={{ color: '#808080ff' }}>RISHABHTCODES</i></a> as a State-of-the-Art typing speed tutor.</p>
+        <p>Built with <a href="https://rishabhtcodes.vercel.app"><i style={{ color: '#6c5757ff' }}>RISHABHTCODES</i></a> as a State-of-the-Art typing speed tutor.</p>
       </footer>
     </div>
   );
