@@ -9,6 +9,7 @@ interface WordDisplayProps {
 
 export default function WordDisplay({ text, input, isStarted }: WordDisplayProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
   const targetChars = text.split('');
   const inputChars = input.split('');
 
@@ -20,8 +21,17 @@ export default function WordDisplay({ text, input, isStarted }: WordDisplayProps
     }
   }, [input]);
 
+  // Auto-focus container on mount so the user can start typing immediately
+  useEffect(() => {
+    outerRef.current?.focus();
+  }, []);
+
   return (
-    <div className="word-display-container glass-panel animate-float">
+    <div 
+      ref={outerRef}
+      className="word-display-container glass-panel animate-float"
+      tabIndex={0}
+    >
       {/* Visual Blurry Glow Behind Text */}
       <div className="word-display-glow"></div>
       

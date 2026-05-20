@@ -103,19 +103,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  font-size: 1.1rem;
-  font-weight: 500;
+  background-color: color-mix(in srgb, var(--bg-surface) 80%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--primary-color);
+  text-shadow: 0 0 10px var(--primary-glow);
   letter-spacing: 0.05em;
-  opacity: 0;
+  opacity: 1;
+  visibility: visible;
   pointer-events: none;
-  animation: float-up 0.5s 0.2s forwards;
+  z-index: 10;
+  transform: scale(1);
+  transition: opacity var(--transition-normal), transform var(--transition-normal), visibility var(--transition-normal);
 }
 
-.word-display-container:not(:focus-within) .start-typing-overlay {
-  opacity: 1;
+.word-display-container:focus {
+  outline: none;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 25px var(--primary-glow) !important;
+}
+
+.word-display-container:focus-within .start-typing-overlay {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96);
 }
 
 @media (max-width: 768px) {
