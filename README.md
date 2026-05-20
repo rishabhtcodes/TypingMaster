@@ -207,33 +207,3 @@ Feel free to fork this project and submit pull requests for improvements!
 ## License
 
 MIT License - Feel free to use this project for personal and commercial purposes.
-
-## Credits
-
-Inspired by [PracticeTyping](https://practice-typing-seven.vercel.app/) - A great typing practice website.
-
-Built with ❤️ using React and Vite
-
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
