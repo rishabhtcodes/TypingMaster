@@ -1,4 +1,4 @@
-# <img src="public/logo.png" alt="TypingMaster Pro Logo" width="50px" style="border-radius: 12px; vertical-align: middle; margin-right: 8px;" /> TypingMaster Pro — Sleek, Minimalist & Scientific Typing Coach
+# <img src="public/logo.png" alt="TypingMaster Pro Logo" width="32" height="32" style="border-radius: 6px; vertical-align: middle; margin-bottom: 4px; margin-right: 8px;" /> TypingMaster Pro — Sleek, Minimalist & Scientific Typing Coach
 
 **TypingMaster Pro** is a modern, high-fidelity typing practice and analytics web application built with **React**, **TypeScript**, **Vite**, and premium **Vanilla CSS**. Reminiscent of professional typing applications like Monkeytype, it combines minimalist aesthetics, zero-latency mechanical sound synthesis, real-time interactive SVG line graphs, and local storage historical dashboards to offer an unparalleled typing improvement experience.
 
