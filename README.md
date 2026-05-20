@@ -1,209 +1,130 @@
-# TypingMaster - React + Vite Typing Practice Website
+# ⚡ TypingMaster Pro — Sleek, Minimalist & Scientific Typing Coach
 
-A modern, fast typing practice application built with React, TypeScript, and Vite. Based on the popular PracticeTyping website, TypingMaster helps you improve your typing speed and accuracy with various keyboard practice modes.
+<p align="center">
+  <img src="/public/logo.png" alt="TypingMaster Pro Logo" width="180px" style="border-radius: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);" />
+</p>
 
-## Features
+**TypingMaster Pro** is a modern, high-fidelity typing practice and analytics web application built with **React**, **TypeScript**, **Vite**, and premium **Vanilla CSS**. Reminiscent of professional typing applications like Monkeytype, it combines minimalist aesthetics, zero-latency mechanical sound synthesis, real-time interactive SVG line graphs, and local storage historical dashboards to offer an unparalleled typing improvement experience.
 
-### 🎯 Multiple Keyboard Modes
-- **Home Row** - Practice the home row keys (ASDFGH)
-- **Top Row** - Practice top row keys (QWERTY)
-- **Bottom Row** - Practice bottom row keys (ZXCVBN)
-- **Number Row** - Practice number keys (123456789)
-- **Full Keyboard** - Practice with the entire keyboard
+---
 
-### ⚙️ Customizable Practice Sessions
-- **Text Length Options** - Choose from short, medium, or long texts
-- **Random Text Selection** - Get random texts for variety
-- **Next Story Button** - Load a new text anytime during practice
+## ✨ Key Features
 
-### 📊 Real-time Statistics
-- **WPM (Words Per Minute)** - Live typing speed calculation
-- **Accuracy** - Real-time accuracy percentage
-- **Character Tracking** - Correct and incorrect character counts (shown during typing)
+### 🎨 Premium HSL-Tailored Color Themes
+Dynamically switch between 5 professionally calibrated, beautiful theme presets with full CSS glow transitions and card glassmorphism:
+*   🏁 **Carbon Dark** — Sleek slate grays with warm tangerine accents.
+*   ⚡ **Cyberpunk Glow** — Pure dark neon night featuring cyan carets and hyper-vibrant feedback.
+*   🧛 **Dracula Night** — Classic deep purple with pastel green keys and neon pink highlights.
+*   🌸 **Sakura Blossom** — Premium warm cream light mode with elegant cherry-blossom rose accents.
+*   ❄️ **Nordic Mint** — Clean, frosted dark arctic slate with glowing mint-teal active elements.
 
-### 🎨 Theme Support
-- **Dark Mode** - Default dark theme for comfortable practice
-- **Light Mode** - Bright theme for daytime use
-- **Toggle Button** - Switch themes with a single click
+### 🎵 In-Browser Mechanical Switch Synthesizer
+Built natively using the HTML5 **Web Audio API** for zero external network calls, zero file-loading lag, and pristine real-time acoustic feedback:
+*   🔵 **Clicky Blue Switches** — High-frequency transient switch clicks paired with a satisfying thud.
+*   🔴 **Quiet Red Switches** — Muted, smooth mid-frequency dampener pops.
+*   🔇 **Mute mode** — For typing in absolute focus.
 
-### 🎮 User-Friendly Interface
-- **Character Highlighting** - See correct characters in green, incorrect in red
-- **Live Input Feedback** - Visual feedback as you type
-- **Keyboard Shortcuts**:
-  - `ESC` - Reset the current text
-  - `TAB` - Switch between keyboard modes
+### 📊 Real-time SVG Performance Graphs
+*   Plots your **Net WPM** and **Raw WPM** second-by-second.
+*   Highlights **mistakes per second** exactly where they occurred.
+*   Complete with custom SVG grid lines, shaded area gradients, and interactive hover highlights.
 
-### 🚀 Performance
-- Built with Vite for fast development and production builds
-- Optimized React components with TypeScript
-- Smooth animations and transitions
+### ⚙️ Multi-Mode Practice HUD
+*   **Modes**: **Time Mode** (15s / 30s / 60s countdowns), **Words Mode** (10 / 25 / 50 / 100 word targets), or **Zen Mode** (infinite typing with manual reset).
+*   **Categories**:
+    *   **General English** — Balanced core vocabulary.
+    *   **Quotes** — Inspirational sayings and famous literary lines.
+    *   **Coding/Syntax** — Realistic code syntax blocks targeting brackets, semi-colons, and variables.
+    *   **Layout Training** — Drill-based targets focusing on Home Row, Top Row, Bottom Row, and Number Row.
 
-## Tech Stack
+### 📈 Historical Dashboard & Struggle Keys Heatmap
+*   **Aggregated Metrics**: Top speed WPM, average WPM, average accuracy, total typing time spent, and total practice attempts.
+*   **Worst Keys Heatmap**: Dynamically tracks your error-rate key-by-key and displays a stunning, interactive heatmap to instantly highlight keys you struggle with.
+*   **Attempt Log**: Scrollable chronological logs of all past sessions saved securely in local storage.
 
-- **Frontend Framework**: React 18
-- **Language**: TypeScript
-- **Build Tool**: Vite
-- **Styling**: CSS3 with CSS Variables
-- **Package Manager**: npm
+---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+*   **Framework**: [React 18](https://react.dev/) (Functional components + customized hooks)
+*   **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict type-safety, verbatim module syntax)
+*   **Build Tool**: [Vite](https://vitejs.dev/) (Hot Module Replacement, ultra-fast builds)
+*   **Styling**: Pure CSS3 with HSL CSS Variables (No external UI frameworks to preserve pixel-perfect cursor transforms)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+
+---
+
+## 📂 Project Structure
 
 ```
 src/
-├── components/          # Reusable React components
-│   ├── Controls.tsx     # Mode, length, and control buttons
-│   ├── Header.tsx       # Application header
-│   ├── Stats.tsx        # Statistics display
-│   └── TypingArea.tsx   # Typing input and text display
+├── components/          # High-performance interactive UI components
+│   ├── Controls.tsx     # Practice settings, durations, categories & switch toggle HUD
+│   ├── Dashboard.tsx    # Aggregate historical analytics & interactive Worst Keys heatmap
+│   ├── StatsChart.tsx   # Custom SVG line-chart plotting speed and mistakes in real-time
+│   ├── ThemeSelector.tsx# Dynamic theme switcher with visual preset indicators
+│   └── WordDisplay.tsx  # Smooth sliding cursor caret, word wrapping & character highlights
 ├── data/
-│   └── texts.ts         # Typing practice texts database
+│   └── texts.ts         # Rich practice databases (English words, quotes, code, rows layout)
 ├── hooks/
-│   └── useTypingGame.ts # Typing game logic hook
-├── styles/              # Component-specific styles
-│   ├── Controls.css
-│   ├── Header.css
-│   ├── Stats.css
-│   └── TypingArea.css
-├── App.tsx              # Main application component
-├── App.css              # App-level styles
-├── index.css            # Global styles and CSS variables
-└── main.tsx             # Application entry point
+│   └── useTypingEngine.ts # Core game state machine, WPM mathematics & timestamp recorders
+├── styles/              # Dedicated CSS styling system
+│   ├── App.css          # Main layout, container geometry, and sidebars
+│   ├── Controls.css     # Settings grids, selection buttons, and pill toggles
+│   ├── Dashboard.css    # Stats badges, attempt logs table, and struggle keys keyboard layout
+│   ├── StatsChart.css   # SVG graph styles, grid paths, areas, and tooltip boxes
+│   ├── ThemeSelector.css# Theme select dialogs and circular swatch controls
+│   ├── WordDisplay.css  # Character colors, caret keyframes, and sliding animations
+│   └── themes.css       # Dynamic CSS Variable overrides for the 5 themes
+├── utils/               # Native browser service utilities
+│   ├── HistoryTracker.ts# LocalStorage analytics logger & session compiler
+│   └── SoundManager.ts  # Web Audio mechanical switch thud/click synthesizer
+├── App.tsx              # Main page orchestrator (Zen mode toggles & screen routing)
+├── index.css            # Global body backgrounds, glassmorphism templates, and typography
+└── main.tsx             # React DOM entry point
 ```
 
-## Getting Started
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
+Make sure you have [Node.js](https://nodejs.org/) (v16 or higher) and `npm` installed.
 
-### Installation
+### Installation & Run
 
-1. Navigate to the project directory:
-```bash
-cd typing-master
-```
+1. Clone or navigate to the directory:
+   ```bash
+   cd TypingMaster
+   ```
 
 2. Install dependencies:
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
-3. Start the development server:
-```bash
-npm run dev
-```
+3. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+   Open the browser at `http://localhost:5173/` to experience TypingMaster Pro!
 
-The application will open at `http://localhost:5173/`
-
-## Available Scripts
-
-### Development
-```bash
-npm run dev
-```
-Starts the Vite development server with hot module replacement.
-
-### Build
+### Build for Production
+To generate a fully optimized, lightweight static bundle (`dist/` folder):
 ```bash
 npm run build
 ```
-Creates an optimized production build in the `dist/` directory.
 
-### Type Check
-```bash
-npm run type-check
-```
-Validates TypeScript types without bundling.
+---
 
-## How to Use
+## ⌨️ Advanced Keyboard Shortcuts
 
-1. **Select a Mode** - Click on one of the keyboard mode buttons to start with that keyboard section
-2. **Choose Text Length** - Select short, medium, or long texts
-3. **Start Typing** - Click in the input field and begin typing the displayed text
-4. **Monitor Progress** - Watch your WPM and accuracy update in real-time
-5. **Get New Text** - Click "Next story" to load a different text
-6. **Reset** - Press `ESC` or click "Restart same text" to reset your progress
-7. **Switch Modes** - Press `TAB` or click mode buttons to practice different keyboard sections
+*   `ESC` — Instantly resets the current practice session.
+*   `TAB` + `Enter` — Quickly cycles or triggers restarts.
+*   `Ctrl/Cmd + Backspace` — Deletes the entire active word.
 
-## Color Scheme
+---
 
-### Light Mode
-- Background: White (#ffffff)
-- Text: Black (#000000)
-- Accent: Blue (#646cff)
-- Correct chars: Green (#10a981)
-- Incorrect chars: Red (#dc2626)
+## 📜 License
 
-### Dark Mode
-- Background: Dark gray (#0f0f0f)
-- Text: White (#ffffff)
-- Accent: Blue (#646cff)
-- Correct chars: Green (#4ecca3)
-- Incorrect chars: Red (#ff6b6b)
-
-## Customization
-
-### Adding More Texts
-
-Edit `src/data/texts.ts` to add more practice texts:
-
-```typescript
-export const typingTexts: Record<string, TextCollection> = {
-  fullKeyboard: {
-    short: ['your text here'],
-    medium: ['longer text here'],
-    long: ['even longer text here']
-  },
-  // ... add more modes
-};
-```
-
-### Modifying Colors
-
-Update CSS variables in `src/index.css`:
-
-```css
-:root {
-  --bg-primary: #0f0f0f;
-  --text-primary: #ffffff;
-  --accent: #646cff;
-  /* ... more variables */
-}
-```
-
-## Performance Tips
-
-- Texts are loaded as strings and split efficiently
-- Statistics calculations are optimized to run only on input change
-- CSS uses CSS variables for efficient theme switching
-- React components are optimized with proper memoization
-
-## Browser Support
-
-- Chrome/Edge: Latest versions
-- Firefox: Latest versions
-- Safari: Latest versions
-- Mobile browsers: Responsive design supported
-
-## Known Limitations
-
-- Best experienced on desktop/laptop for comfortable typing
-- Mobile support is available but may have UX limitations due to keyboard restrictions
-
-## Future Enhancements
-
-- [ ] User accounts and progress tracking
-- [ ] Typing test modes (1 minute, 5 minute challenges)
-- [ ] Sound effects and notifications
-- [ ] Leaderboards
-- [ ] Custom text input
-- [ ] Typing games and challenges
-- [ ] Advanced analytics and graphs
-
-## Contributing
-
-Feel free to fork this project and submit pull requests for improvements!
-
-## License
-
-MIT License - Feel free to use this project for personal and commercial purposes.
+This project is licensed under the MIT License — feel free to use it for personal training or further extensions!
