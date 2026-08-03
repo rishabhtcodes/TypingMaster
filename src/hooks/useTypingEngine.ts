@@ -30,6 +30,12 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
   const errorCountRef = useRef<number>(0);
   const struggleKeysRef = useRef<Record<string, number>>({});
   const intervalRef = useRef<any>(null);
+  const inputRef = useRef<string>(input);
+
+  // Sync inputRef with state
+  useEffect(() => {
+    inputRef.current = input;
+  }, [input]);
 
   // Active typing stats
   const [stats, setStats] = useState<TypingStats>({
@@ -165,21 +171,19 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
       
       // Time Mode Countdown
       if (testMode === 'time') {
-        setTimeLeft((prev) => {
-          if (prev <= 1) {
-            setIsCompleted(true);
-            setIsStarted(false);
-            return 0;
-          }
-          return prev - 1;
-        });
+        const remaining = Math.max(0, timeLimit - elapsedSeconds);
+        setTimeLeft(remaining);
+        if (remaining <= 0) {
+          setIsCompleted(true);
+          setIsStarted(false);
+        }
       } else {
         // Words & Zen Mode count upwards
         setTimeLeft(elapsedSeconds);
       }
 
-      // Record snapshot
-      const currentStats = calculateCurrentStats(input, elapsedSeconds);
+      // Record snapshot using inputRef to avoid restarting interval on keypress
+      const currentStats = calculateCurrentStats(inputRef.current, elapsedSeconds);
       if (currentStats) {
         setHistorySnaps((prev) => [
           ...prev,
@@ -196,7 +200,7 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isStarted, isCompleted, testMode, input, calculateCurrentStats]);
+  }, [isStarted, isCompleted, testMode, timeLimit, calculateCurrentStats]);
 
   // Recalculate stats when typing updates to ensure instant visual responsiveness
   useEffect(() => {
