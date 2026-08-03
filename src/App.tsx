@@ -116,7 +116,7 @@ export default function App() {
   };
 
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${isStarted ? 'typing-active' : ''}`}>
 
       {/* 1. Integrated Premium Top Navigation Bar */}
       <header className="app-header glass-panel">
