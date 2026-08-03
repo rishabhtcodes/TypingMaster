@@ -368,3 +368,49 @@
     width: 100%;
   }
 }
+
+/* Focus Blur Effect when typing starts */
+.app-header,
+.controls-hud,
+.practice-tip,
+.footer-credits {
+  transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+.app-shell.typing-active .app-header,
+.app-shell.typing-active .controls-hud,
+.app-shell.typing-active .practice-tip,
+.app-shell.typing-active .footer-credits {
+  filter: blur(6px);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.app-shell.typing-active .app-header:hover,
+.app-shell.typing-active .controls-hud:hover {
+  filter: blur(0);
+  opacity: 0.95;
+  pointer-events: auto;
+}
+
+.app-shell.typing-active .live-hud {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: scale(1.05);
+}
+
+.app-shell.typing-active .word-display-box {
+  filter: none !important;
+  opacity: 1 !important;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.06), 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.app-shell.typing-active .action-bar {
+  filter: none !important;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.app-shell.typing-active .action-bar:hover {
+  opacity: 1;
+}
