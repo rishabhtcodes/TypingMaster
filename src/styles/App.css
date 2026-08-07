@@ -89,7 +89,7 @@
 }
 
 .app-viewport.coding-viewport-active {
-  max-width: 1260px;
+  max-width: 1280px;
 }
 
 .practice-screen {
@@ -102,7 +102,7 @@
 
 .practice-screen.coding-layout-active {
   flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 1.5rem;
   width: 100%;
 }
@@ -113,6 +113,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .practice-center-col {
@@ -123,19 +124,18 @@
 }
 
 .coding-sidebar-col {
-  width: 320px;
-  min-width: 320px;
+  width: 330px;
+  min-width: 330px;
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
-/* Tall Code Console box in Coding Mode */
+/* Tall & Perfectly Aligned Code Console box in Coding Mode */
 .coding-layout-active .code-console-mode {
   width: 100%;
-  height: calc(100vh - 280px);
-  min-height: 480px;
-  max-height: 680px;
+  flex: 1;
+  min-height: 520px;
   display: flex;
   flex-direction: column;
 }
@@ -143,6 +143,7 @@
 .coding-layout-active .console-body-viewport {
   flex: 1;
   height: 100%;
+  min-height: 420px;
   max-height: none !important;
 }
 
