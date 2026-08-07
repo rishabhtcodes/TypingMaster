@@ -1,11 +1,16 @@
-// 100 Clean, Multi-Line & Real Coding Practice Snippets across Python, TypeScript, JavaScript, C++, Java, and C
-
 export interface CodeSnippet {
   id: string;
   title: string;
   filename: string;
   lang: string;
   code: string;
+  sampleInput?: string;
+  sampleOutput?: string;
+  explanation?: string;
+}
+
+export function findSnippetByCode(codeText: string): CodeSnippet | undefined {
+  return codeSnippets.find(s => s.code === codeText);
 }
 
 export const codeSnippets: CodeSnippet[] = [
@@ -15,6 +20,9 @@ export const codeSnippets: CodeSnippet[] = [
     title: 'Palindrome String Check',
     filename: 'palindrome_check.py',
     lang: 'Python',
+    sampleInput: 'text = "A man, a plan, a canal: Panama"',
+    sampleOutput: 'True',
+    explanation: 'Ignores case and non-alphanumeric characters to verify symmetrical reading.',
     code: `# Filename: palindrome_check.py
 def is_palindrome(text: str) -> bool:
     cleaned = ''.join(ch.lower() for ch in text if ch.isalnum())
@@ -1581,6 +1589,9 @@ export function findPeakElement(nums: number[]): number {
     title: 'Move Zeroes to End of Array',
     filename: 'move_zeroes.py',
     lang: 'Python',
+    sampleInput: 'nums = [0, 1, 0, 3, 12]',
+    sampleOutput: '[1, 3, 12, 0, 0]',
+    explanation: 'Moves all zeros to the end in-place while keeping relative order of non-zero numbers.',
     code: `# Filename: move_zeroes.py
 def move_zeroes(nums: list[int]) -> None:
     last_non_zero = 0

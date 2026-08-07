@@ -18,7 +18,9 @@ import {
   AlertTriangle,
   Award,
   Zap,
+  Terminal,
 } from 'lucide-react';
+import { findSnippetByCode } from './data/codeSnippets';
 import './styles/App.css';
 
 export default function App() {
@@ -38,6 +40,9 @@ export default function App() {
 
   // Active word prompt text
   const [promptText, setPromptText] = useState('');
+
+  // Active coding snippet details
+  const activeSnippet = category === 'code' ? findSnippetByCode(promptText) : null;
 
   // Save state tracking
   const hasSavedRef = useRef<boolean>(false);
@@ -236,6 +241,34 @@ export default function App() {
                   onSoundTypeChange={handleSoundChange}
                   isStarted={isStarted}
                 />
+
+                {/* Bottom Right Corner: Sample Test Case Panel */}
+                <div className={`sample-testcase-card glass-panel animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
+                  <div className="testcase-header">
+                    <Terminal size={14} className="text-primary" />
+                    <span>Sample Test Case</span>
+                  </div>
+                  <div className="testcase-body font-mono">
+                    <div className="testcase-block">
+                      <span className="testcase-label">Input</span>
+                      <code className="testcase-val">
+                        {activeSnippet?.sampleInput || 'nums = [0, 1, 0, 3, 12]'}
+                      </code>
+                    </div>
+                    <div className="testcase-block">
+                      <span className="testcase-label">Expected Output</span>
+                      <code className="testcase-val text-correct">
+                        {activeSnippet?.sampleOutput || '[1, 3, 12, 0, 0]'}
+                      </code>
+                    </div>
+                    {activeSnippet?.explanation && (
+                      <div className="testcase-explanation">
+                        <span className="testcase-label">Explanation</span>
+                        <p>{activeSnippet.explanation}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             )}
 
