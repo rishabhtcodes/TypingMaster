@@ -13,6 +13,25 @@ export default function WordDisplay({ text, input, isStarted }: WordDisplayProps
   const targetChars = text.split('');
   const inputChars = input.split('');
 
+  // Group characters into words for unbreakable line wrapping
+  const words: { startIdx: number; chars: string[] }[] = [];
+  let currentWord: { startIdx: number; chars: string[] } | null = null;
+
+  targetChars.forEach((char, idx) => {
+    if (!currentWord) {
+      currentWord = { startIdx: idx, chars: [char] };
+    } else {
+      currentWord.chars.push(char);
+    }
+    if (char === ' ') {
+      words.push(currentWord);
+      currentWord = null;
+    }
+  });
+  if (currentWord) {
+    words.push(currentWord);
+  }
+
   // Keep active caret visible by scrolling container into view if needed
   useEffect(() => {
     const activeEl = containerRef.current?.querySelector('.char-active');
@@ -36,43 +55,49 @@ export default function WordDisplay({ text, input, isStarted }: WordDisplayProps
       <div className="word-display-glow"></div>
       
       <div className="word-display-text" ref={containerRef}>
-        {targetChars.map((char, index) => {
-          const isTyped = index < inputChars.length;
-          const isCorrect = isTyped && inputChars[index] === char;
-          const isActive = index === inputChars.length;
-          
-          let charClass = 'char-future';
-          if (isActive) charClass = 'char-active';
-          else if (isTyped) {
-            charClass = isCorrect ? 'char-correct' : 'char-incorrect';
-          }
+        {words.map((w, wIdx) => (
+          <span key={wIdx} className="word-node">
+            {w.chars.map((char, charOffset) => {
+              const index = w.startIdx + charOffset;
+              const isTyped = index < inputChars.length;
+              const isCorrect = isTyped && inputChars[index] === char;
+              const isActive = index === inputChars.length;
+              
+              let charClass = 'char-future';
+              if (isActive) charClass = 'char-active';
+              else if (isTyped) {
+                charClass = isCorrect ? 'char-correct' : 'char-incorrect';
+              }
 
-          // Handle visual linebreaks or spaces
-          const isSpace = char === ' ';
+              const isSpace = char === ' ';
 
-          return (
-            <span 
-              key={index} 
-              className={`char-item ${charClass} ${isSpace ? 'char-space' : ''}`}
-            >
-              {isActive && (
-                <span className="cursor-caret"></span>
-              )}
-              {isSpace ? ' ' : char}
-            </span>
-          );
-        })}
+              return (
+                <span 
+                  key={index} 
+                  className={`char-item ${charClass} ${isSpace ? 'char-space' : ''}`}
+                >
+                  {isActive && (
+                    <span className="cursor-caret"></span>
+                  )}
+                  {isSpace ? ' ' : char}
+                </span>
+              );
+            })}
+          </span>
+        ))}
 
         {/* Extra characters typed past target text length */}
         {inputChars.length > targetChars.length && (
-          inputChars.slice(targetChars.length).map((char, index) => (
-            <span key={`extra-${index}`} className="char-item char-incorrect char-extra">
-              {index === inputChars.length - targetChars.length - 1 && (
-                <span className="cursor-caret"></span>
-              )}
-              {char === ' ' ? ' ' : char}
-            </span>
-          ))
+          <span className="word-node">
+            {inputChars.slice(targetChars.length).map((char, index) => (
+              <span key={`extra-${index}`} className="char-item char-incorrect char-extra">
+                {index === inputChars.length - targetChars.length - 1 && (
+                  <span className="cursor-caret"></span>
+                )}
+                {char === ' ' ? ' ' : char}
+              </span>
+            ))}
+          </span>
         )}
       </div>
 
