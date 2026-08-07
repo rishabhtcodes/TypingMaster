@@ -8,7 +8,7 @@ import StatsChart from './components/StatsChart';
 import Dashboard from './components/Dashboard';
 import ThemeSelector from './components/ThemeSelector';
 import Controls from './components/Controls';
-import type { TestMode, TextCategory, TypingStyle } from './components/Controls';
+import type { TestMode, TextCategory } from './components/Controls';
 import {
   BarChart2,
   RotateCw,
@@ -36,7 +36,6 @@ export default function App() {
   // Game config state
   const [testMode, setTestMode] = useState<TestMode>('time');
   const [category, setCategory] = useState<TextCategory>('english');
-  const [typingStyle, setTypingStyle] = useState<TypingStyle>('10-finger');
   const [timeLimit, setTimeLimit] = useState(30);
   const [wordLimit, setWordLimit] = useState(25);
 
@@ -122,19 +121,12 @@ export default function App() {
     localStorage.setItem('typex_pro_focus', String(focus));
   };
 
-  const handleHomeRedirect = () => {
-    setActiveTab('practice');
-    setCategory('english');
-    setTestMode('time');
-    handleLoadNewText();
-  };
-
   return (
     <div className={`app-shell ${isStarted ? 'typing-active' : ''}`}>
 
       {/* 1. Integrated Premium Top Navigation Bar */}
       <header className={`app-header glass-panel ${isStarted && focusMode ? 'hud-faded' : ''}`}>
-        <div className="header-logo" onClick={handleHomeRedirect} style={{ cursor: 'pointer' }} title="Go to Home Page">
+        <div className="header-logo" onClick={() => { setActiveTab('practice'); reset(); }}>
           <img src="/logo.png" className="logo-image" alt="Ty-pex Logo" />
           <h1>Ty-pex </h1>
         </div>
@@ -221,27 +213,14 @@ export default function App() {
                   onFocusModeChange={handleFocusChange}
                   soundType={soundType}
                   onSoundTypeChange={handleSoundChange}
-                  typingStyle={typingStyle}
-                  onTypingStyleChange={setTypingStyle}
                   isStarted={isStarted}
                 />
               )}
 
-              {/* Dynamic Finger Technique Guide Tip */}
+              {/* Sleek inline tutorial tip */}
               {!isStarted && (
                 <p className="practice-tip animate-float">
-                  {typingStyle === '10-finger' && (
-                    <span><b>🖐️ 10-Finger Touch Typing:</b> Rest left fingers on <b>A-S-D-F</b> and right on <b>J-K-L-;</b>. Use thumbs for Spacebar.</span>
-                  )}
-                  {typingStyle === '5-finger' && (
-                    <span><b>✋ 5-Finger Half-Hand:</b> Uses 5 fingers on your dominant hand to cover home row and adjacent key columns.</span>
-                  )}
-                  {typingStyle === 'one-hand' && (
-                    <span><b>🤚 One-Hand Technique:</b> Sweeps a single hand fluidly across QWERTY key zones for accessible typing.</span>
-                  )}
-                  {typingStyle === '2-finger' && (
-                    <span><b>✌️ 2-Finger Focal:</b> Uses left and right index fingers for rapid direct target tappings.</span>
-                  )}
+                  <b>Developer Tip:</b> Switch sound settings to <b>quiet</b> or <b>clicky</b> switches for highly satisfying tactile audio feedback!
                 </p>
               )}
             </div>
@@ -262,8 +241,6 @@ export default function App() {
                   onFocusModeChange={handleFocusChange}
                   soundType={soundType}
                   onSoundTypeChange={handleSoundChange}
-                  typingStyle={typingStyle}
-                  onTypingStyleChange={setTypingStyle}
                   isStarted={isStarted}
                 />
 

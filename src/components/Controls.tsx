@@ -14,7 +14,6 @@ import '../styles/Controls.css';
 
 export type TestMode = 'time' | 'words' | 'zen';
 export type TextCategory = 'english' | 'code' | 'quotes' | 'homeRow' | 'topRow' | 'bottomRow' | 'numberRow';
-export type TypingStyle = '10-finger' | '5-finger' | 'one-hand' | '2-finger';
 
 interface ControlsProps {
   mode: TestMode;
@@ -29,8 +28,6 @@ interface ControlsProps {
   onFocusModeChange: (focus: boolean) => void;
   soundType: SwitchType;
   onSoundTypeChange: (type: SwitchType) => void;
-  typingStyle: TypingStyle;
-  onTypingStyleChange: (style: TypingStyle) => void;
   isStarted: boolean;
 }
 
@@ -47,8 +44,6 @@ export default function Controls({
   onFocusModeChange,
   soundType,
   onSoundTypeChange,
-  typingStyle,
-  onTypingStyleChange,
   isStarted,
 }: ControlsProps) {
 
@@ -229,43 +224,6 @@ export default function Controls({
           </div>
         </div>
 
-      </div>
-
-      {/* 4. Finger Technique & Style Selection */}
-      <div className="divider-horizontal"></div>
-
-      <div className="control-section">
-        <span className="section-label">Typing Technique</span>
-        <div className="button-group">
-          <button 
-            className={`btn-control ${typingStyle === '10-finger' ? 'active' : ''}`}
-            onClick={() => onTypingStyleChange('10-finger')}
-            title="Standard 10-Finger Touch Typing"
-          >
-            🖐️ 10-Finger (Full)
-          </button>
-          <button 
-            className={`btn-control ${typingStyle === '5-finger' ? 'active' : ''}`}
-            onClick={() => onTypingStyleChange('5-finger')}
-            title="5-Finger Half-Hand Dexterity Practice"
-          >
-            ✋ 5-Finger (Half)
-          </button>
-          <button 
-            className={`btn-control ${typingStyle === 'one-hand' ? 'active' : ''}`}
-            onClick={() => onTypingStyleChange('one-hand')}
-            title="Single Hand Accessible Sweep Typing"
-          >
-            🤚 One-Hand
-          </button>
-          <button 
-            className={`btn-control ${typingStyle === '2-finger' ? 'active' : ''}`}
-            onClick={() => onTypingStyleChange('2-finger')}
-            title="2-Finger Focal Index Practice"
-          >
-            ✌️ 2-Finger
-          </button>
-        </div>
       </div>
     </div>
   );
