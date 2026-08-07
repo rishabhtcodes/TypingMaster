@@ -131,6 +131,31 @@ export default function App() {
           <h1>Ty-pex </h1>
         </div>
 
+        {/* Center Embedded Live HUD Bar */}
+        {activeTab === 'practice' && (
+          <div className={`header-center-hud ${isStarted && focusMode ? 'hud-faded' : ''}`}>
+            <div className="hud-pill font-mono">
+              <Clock size={14} className="text-muted" />
+              <span className="hud-value">
+                {testMode === 'time' ? `${timeLeft}s` : formatSeconds(timeLeft)}
+              </span>
+              <span className="hud-tag">{testMode === 'time' ? 'left' : 'time'}</span>
+            </div>
+
+            <div className="hud-pill font-mono">
+              <Zap size={14} className="text-correct" />
+              <span className="hud-value">{stats.wpm}</span>
+              <span className="hud-tag">wpm</span>
+            </div>
+
+            <div className="hud-pill font-mono">
+              <Percent size={14} className="text-warning" />
+              <span className="hud-value">{stats.accuracy}%</span>
+              <span className="hud-tag">accuracy</span>
+            </div>
+          </div>
+        )}
+
         <nav className="header-nav">
           <button
             className={`btn-nav-tab ${activeTab === 'practice' ? 'active' : ''}`}
@@ -160,28 +185,6 @@ export default function App() {
             
             {/* Left/Main Column */}
             <div className={category === 'code' ? 'coding-main-col' : 'practice-center-col'}>
-              {/* Live active indicator HUD (Fades in focus mode) */}
-              <div className={`live-hud animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
-                <div className="hud-pill font-mono">
-                  <Clock size={15} className="text-muted" />
-                  <span className="hud-value">
-                    {testMode === 'time' ? `${timeLeft}s` : formatSeconds(timeLeft)}
-                  </span>
-                  <span className="hud-tag">{testMode === 'time' ? 'left' : 'time'}</span>
-                </div>
-
-                <div className="hud-pill font-mono">
-                  <Zap size={15} className="text-correct" />
-                  <span className="hud-value">{stats.wpm}</span>
-                  <span className="hud-tag">wpm</span>
-                </div>
-
-                <div className="hud-pill font-mono">
-                  <Percent size={15} className="text-warning" />
-                  <span className="hud-value">{stats.accuracy}%</span>
-                  <span className="hud-tag">accuracy</span>
-                </div>
-              </div>
 
               {/* The Monospace word display container */}
               <WordDisplay

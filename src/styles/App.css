@@ -76,13 +76,23 @@
   color: var(--primary-color);
 }
 
+.header-center-hud {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity var(--transition-slow), filter var(--transition-slow);
+}
+
 /* Viewport and screens */
 .app-viewport {
   flex: 1;
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0.5rem 2rem 2rem 2rem;
+  padding: 1rem 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   transition: max-width var(--transition-normal);
@@ -127,7 +137,7 @@
   min-width: 320px;
   display: flex;
   flex-direction: column;
-  margin-top: calc(32px + 0.75rem);
+  margin-top: 0;
 }
 
 /* Tall Code Console box in Coding Mode */
