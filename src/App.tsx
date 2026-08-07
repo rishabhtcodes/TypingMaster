@@ -26,9 +26,9 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<'practice' | 'dashboard'>('practice');
 
   // Preferences state
-  const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('typex_pro_theme') || localStorage.getItem('typing_master_pro_theme') || 'carbon');
-  const [soundType, setSoundType] = useState<SwitchType>(() => ((localStorage.getItem('typex_pro_sound') || localStorage.getItem('typing_master_pro_sound')) as SwitchType) || 'clicky');
-  const [focusMode, setFocusMode] = useState(() => (localStorage.getItem('typex_pro_focus') ?? localStorage.getItem('typing_master_pro_focus')) === 'true');
+  const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('typex_pro_theme') || localStorage.getItem('ty-pex_pro_theme') || 'paper');
+  const [soundType, setSoundType] = useState<SwitchType>(() => ((localStorage.getItem('typex_pro_sound') || localStorage.getItem('ty-pex_pro_sound')) as SwitchType) || 'clicky');
+  const [focusMode, setFocusMode] = useState(() => (localStorage.getItem('typex_pro_focus') ?? localStorage.getItem('ty-pex_pro_focus')) === 'true');
 
   // Game config state
   const [testMode, setTestMode] = useState<TestMode>('time');
@@ -122,7 +122,7 @@ export default function App() {
       <header className="app-header glass-panel">
         <div className="header-logo" onClick={() => { setActiveTab('practice'); reset(); }}>
           <img src="/logo.png" className="logo-image" alt="Ty-pex Logo" />
-          <h1>Ty-pex <span className="logo-badge">Pro</span></h1>
+          <h1>Ty-pex </h1>
         </div>
 
         <nav className="header-nav">

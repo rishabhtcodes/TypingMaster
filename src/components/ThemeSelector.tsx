@@ -15,6 +15,12 @@ export interface ThemePreset {
 
 export const themesList: ThemePreset[] = [
   {
+    id: 'paper',
+    name: 'Paper Slate',
+    className: 'theme-paper',
+    colors: { bg: '#dce3ea', primary: '#237573', text: '#1e293b' },
+  },
+  {
     id: 'carbon',
     name: 'Carbon Dark',
     className: 'theme-carbon',

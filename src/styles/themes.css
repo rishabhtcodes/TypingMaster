@@ -84,3 +84,22 @@
   --border-color: rgba(221, 94, 137, 0.2);
   --border-hover: rgba(221, 94, 137, 0.5);
 }
+
+/* 6. Paper Typewriter - Soft light slate with teal borders & typewriter font */
+.theme-paper {
+  --bg-color: #dce3ea;
+  --bg-surface: #f0f4f8;
+  --bg-surface-glass: rgba(240, 244, 248, 0.92);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-correct: #059669;
+  --text-incorrect: #dc2626;
+  --primary-color: #237573;
+  --primary-glow: rgba(35, 117, 115, 0.25);
+  --secondary-color: #145e5c;
+  --caret-color: #237573;
+  --border-color: #2b7e7c;
+  --border-hover: #1b6361;
+  --font-mono: 'Courier Prime', 'Space Mono', 'JetBrains Mono', monospace;
+}
+
