@@ -20,36 +20,6 @@ export const themesList: ThemePreset[] = [
     className: 'theme-paper',
     colors: { bg: '#dce3ea', primary: '#237573', text: '#1e293b' },
   },
-  {
-    id: 'carbon',
-    name: 'Carbon Dark',
-    className: 'theme-carbon',
-    colors: { bg: '#121214', primary: '#ff9f1c', text: '#e2e8f0' },
-  },
-  {
-    id: 'cyberpunk',
-    name: 'Cyberpunk Glow',
-    className: 'theme-cyberpunk',
-    colors: { bg: '#0c0813', primary: '#ff007f', text: '#f3e8ff' },
-  },
-  {
-    id: 'dracula',
-    name: 'Dracula Night',
-    className: 'theme-dracula',
-    colors: { bg: '#282a36', primary: '#bd93f9', text: '#f8f8f2' },
-  },
-  {
-    id: 'nordic',
-    name: 'Nordic Mint',
-    className: 'theme-nordic',
-    colors: { bg: '#1e293b', primary: '#a7f3d0', text: '#f1f5f9' },
-  },
-  {
-    id: 'sakura',
-    name: 'Sakura Blossom',
-    className: 'theme-sakura',
-    colors: { bg: '#fcf7f7', primary: '#dd5e89', text: '#4a3737' },
-  },
 ];
 
 interface ThemeSelectorProps {
