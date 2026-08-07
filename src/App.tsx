@@ -180,6 +180,7 @@ export default function App() {
               text={promptText}
               input={input}
               isStarted={isStarted}
+              category={category}
             />
 
             {/* Quick action bar */}
