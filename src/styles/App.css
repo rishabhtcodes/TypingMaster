@@ -76,16 +76,6 @@
   color: var(--primary-color);
 }
 
-.header-center-hud {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: opacity var(--transition-slow), filter var(--transition-slow);
-}
-
 /* Viewport and screens */
 .app-viewport {
   flex: 1;
@@ -137,7 +127,7 @@
   min-width: 320px;
   display: flex;
   flex-direction: column;
-  margin-top: 0;
+  margin-top: calc(30px + 0.75rem);
 }
 
 /* Tall Code Console box in Coding Mode */
@@ -159,6 +149,9 @@
 /* Live HUD overlay */
 .live-hud {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   gap: 1.5rem;
   margin-top: 0;
   margin-bottom: 0.75rem;

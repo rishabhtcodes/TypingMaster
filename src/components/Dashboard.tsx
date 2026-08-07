@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { HistoryTracker } from '../utils/HistoryTracker';
 import type { TestAttempt } from '../utils/HistoryTracker';
 import { 
@@ -20,6 +20,11 @@ interface DashboardProps {
 
 export default function Dashboard({ onStartPractice }: DashboardProps) {
   const [attempts, setAttempts] = useState<TestAttempt[]>(() => HistoryTracker.getAttempts());
+
+  useEffect(() => {
+    setAttempts(HistoryTracker.getAttempts());
+  }, []);
+
   const stats = useMemo(() => HistoryTracker.getSummaryStats(), [attempts]);
 
   const handleClearHistory = () => {
