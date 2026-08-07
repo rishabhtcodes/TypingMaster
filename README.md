@@ -1,6 +1,6 @@
-# TypingMaster Pro — Sleek, Minimalist & Scientific Typing Coach
+# Ty-pex — Sleek, Minimalist & Scientific Typing Coach
 
-**TypingMaster Pro** is a modern, high-fidelity typing practice and analytics web application built with **React**, **TypeScript**, **Vite**, and premium **Vanilla CSS**. Reminiscent of professional typing applications like Monkeytype, it combines minimalist aesthetics, zero-latency mechanical sound synthesis, real-time interactive SVG line graphs, and local storage historical dashboards to offer an unparalleled typing improvement experience.
+**Ty-pex** is a modern, high-fidelity typing practice and analytics web application built with **React**, **TypeScript**, **Vite**, and premium **Vanilla CSS**. Reminiscent of professional typing applications like Monkeytype, it combines minimalist aesthetics, zero-latency mechanical sound synthesis, real-time interactive SVG line graphs, and local storage historical dashboards to offer an unparalleled typing improvement experience.
 
 ---
 
@@ -91,7 +91,7 @@ Make sure you have [Node.js](https://nodejs.org/) (v16 or higher) and `npm` inst
 
 1. Navigate to the directory:
    ```bash
-   cd TypingMaster
+   cd Ty-pex
    ```
 
 2. Install dependencies:
@@ -103,7 +103,7 @@ Make sure you have [Node.js](https://nodejs.org/) (v16 or higher) and `npm` inst
    ```bash
    npm run dev
    ```
-   Open the browser at `http://localhost:5173/` to experience TypingMaster Pro!
+   Open the browser at `http://localhost:5173/` to experience Ty-pex!
 
 ### Build for Production
 To generate a fully optimized, lightweight static bundle (`dist/` folder):

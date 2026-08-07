@@ -20,12 +20,13 @@ export interface SummaryStats {
   struggleKeysHeatmap: Array<{ key: string; count: number }>;
 }
 
-const STORAGE_KEY = 'typing_master_pro_history';
+const STORAGE_KEY = 'typex_pro_history';
+const OLD_STORAGE_KEY = 'typing_master_pro_history';
 
 class HistoryEngine {
   public getAttempts(): TestAttempt[] {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(OLD_STORAGE_KEY);
       return stored ? JSON.parse(stored) : [];
     } catch (e) {
       console.error('Failed to load history', e);

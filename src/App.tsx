@@ -26,9 +26,9 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<'practice' | 'dashboard'>('practice');
 
   // Preferences state
-  const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('typing_master_pro_theme') || 'carbon');
-  const [soundType, setSoundType] = useState<SwitchType>(() => (localStorage.getItem('typing_master_pro_sound') as SwitchType) || 'clicky');
-  const [focusMode, setFocusMode] = useState(() => localStorage.getItem('typing_master_pro_focus') === 'true');
+  const [currentTheme, setCurrentTheme] = useState(() => localStorage.getItem('typex_pro_theme') || localStorage.getItem('typing_master_pro_theme') || 'carbon');
+  const [soundType, setSoundType] = useState<SwitchType>(() => ((localStorage.getItem('typex_pro_sound') || localStorage.getItem('typing_master_pro_sound')) as SwitchType) || 'clicky');
+  const [focusMode, setFocusMode] = useState(() => (localStorage.getItem('typex_pro_focus') ?? localStorage.getItem('typing_master_pro_focus')) === 'true');
 
   // Game config state
   const [testMode, setTestMode] = useState<TestMode>('time');
@@ -102,17 +102,17 @@ export default function App() {
   // Sync preference changes to localStorage
   const handleThemeChange = (themeId: string) => {
     setCurrentTheme(themeId);
-    localStorage.setItem('typing_master_pro_theme', themeId);
+    localStorage.setItem('typex_pro_theme', themeId);
   };
 
   const handleSoundChange = (type: SwitchType) => {
     setSoundType(type);
-    localStorage.setItem('typing_master_pro_sound', type);
+    localStorage.setItem('typex_pro_sound', type);
   };
 
   const handleFocusChange = (focus: boolean) => {
     setFocusMode(focus);
-    localStorage.setItem('typing_master_pro_focus', String(focus));
+    localStorage.setItem('typex_pro_focus', String(focus));
   };
 
   return (
@@ -121,8 +121,8 @@ export default function App() {
       {/* 1. Integrated Premium Top Navigation Bar */}
       <header className="app-header glass-panel">
         <div className="header-logo" onClick={() => { setActiveTab('practice'); reset(); }}>
-          <img src="/logo.png" className="logo-image" alt="TypingMaster Pro Logo" />
-          <h1>TypingMaster <span className="logo-badge">Pro</span></h1>
+          <img src="/logo.png" className="logo-image" alt="Ty-pex Logo" />
+          <h1>Ty-pex <span className="logo-badge">Pro</span></h1>
         </div>
 
         <nav className="header-nav">
@@ -284,7 +284,7 @@ export default function App() {
       </main>
 
       <footer className="footer-credits glass-panel">
-        <p>Built with <a href="https://rishabhtcodes.vercel.app" style={{ textDecoration: 'none', fontWeight: 'bold' }}><i style={{ color: '#6c5757ff' }}>RISHABHTCODES</i></a> as a State-of-the-Art typing speed tutor.</p>
+        <p>Built with <a href="https://rishabhtcodes.vercel.app" style={{ textDecoration: 'none', fontWeight: 'bold' }}><i style={{ color: '#6c5757ff' }}>RISHABHTCODES</i></a> — <b>Ty-pex</b> typing speed tutor.</p>
       </footer>
     </div>
   );

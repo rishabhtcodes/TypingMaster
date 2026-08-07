@@ -21,7 +21,7 @@ export const typingTexts: TextCategory = {
     "import React, { useState, useEffect, useCallback } from 'react'; export const useTheme = () => { const [theme, setTheme] = useState('dark'); const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark'); return { theme, toggleTheme }; };",
     "def bubble_sort(arr): n = len(arr) for i in range(n): for j in range(0, n-i-1): if arr[j] > arr[j+1]: arr[j], arr[j+1] = arr[j+1], arr[j] return arr",
     "async function fetchData(url) { try { const response = await fetch(url); if (!response.ok) throw new Error('Network error'); const data = await response.json(); return { success: true, data }; } catch (error) { return { success: false, error: error.message }; } }",
-    "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /> <title>TypingMaster Pro</title> <link rel=\"stylesheet\" href=\"styles.css\" /> </head> <body> <main id=\"app\"></main> </body> </html>",
+    "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /> <title>Ty-pex</title> <link rel=\"stylesheet\" href=\"styles.css\" /> </head> <body> <main id=\"app\"></main> </body> </html>",
   ],
   quotes: [
     "The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you will know when you find it. — Steve Jobs",
