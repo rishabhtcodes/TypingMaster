@@ -189,6 +189,7 @@ export default function App() {
                 input={input}
                 isStarted={isStarted}
                 category={category}
+                focusMode={focusMode}
               />
 
               {/* Quick action bar */}

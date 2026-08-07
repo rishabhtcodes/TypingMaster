@@ -7,9 +7,10 @@ interface WordDisplayProps {
   input: string;
   isStarted: boolean;
   category?: string;
+  focusMode?: boolean;
 }
 
-export default function WordDisplay({ text, input, isStarted, category }: WordDisplayProps) {
+export default function WordDisplay({ text, input, isStarted, category, focusMode }: WordDisplayProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const outerRef = useRef<HTMLDivElement>(null);
   const targetChars = text.split('');
@@ -207,9 +208,11 @@ export default function WordDisplay({ text, input, isStarted, category }: WordDi
         </div>
       )}
 
-      {!isStarted && input.length === 0 && (
-        <div className="start-typing-overlay">
-          <span>Start typing to begin test...</span>
+      {!isStarted && input.length === 0 && focusMode && (
+        <div className="start-typing-overlay focus-blur-overlay">
+          <div className="start-typing-badge">
+            <span>Start typing to begin test...</span>
+          </div>
         </div>
       )}
     </div>

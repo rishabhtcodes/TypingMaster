@@ -107,29 +107,38 @@
   font-size: 0.85em;
 }
 
-/* Start Overlay message pill */
-.start-typing-overlay {
+/* Focus Mode Start Typing Blur Overlay */
+.start-typing-overlay.focus-blur-overlay {
   position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-surface-glass);
-  border: 1px solid var(--border-color);
-  padding: 0.35rem 1rem;
-  border-radius: 30px;
-  box-shadow: var(--shadow-sm);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  letter-spacing: 0.03em;
+  background-color: color-mix(in srgb, var(--bg-surface) 75%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: inherit;
+  z-index: 20;
   opacity: 1;
   visibility: visible;
-  pointer-events: none;
-  z-index: 10;
-  transition: opacity var(--transition-normal), transform var(--transition-normal), visibility var(--transition-normal);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.start-typing-badge {
+  padding: 0.65rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--bg-main);
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  animation: pulse-badge 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
 }
 
 .word-display-container:focus {
