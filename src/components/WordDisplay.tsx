@@ -23,7 +23,7 @@ export default function WordDisplay({ text, input, isStarted }: WordDisplayProps
     } else {
       currentWord.chars.push(char);
     }
-    if (char === ' ') {
+    if (char === ' ' || char === '\n') {
       words.push(currentWord);
       currentWord = null;
     }
@@ -70,16 +70,17 @@ export default function WordDisplay({ text, input, isStarted }: WordDisplayProps
               }
 
               const isSpace = char === ' ';
+              const isNewline = char === '\n';
 
               return (
                 <span 
                   key={index} 
-                  className={`char-item ${charClass} ${isSpace ? 'char-space' : ''}`}
+                  className={`char-item ${charClass} ${isSpace ? 'char-space' : ''} ${isNewline ? 'char-newline' : ''}`}
                 >
                   {isActive && (
                     <span className="cursor-caret"></span>
                   )}
-                  {isSpace ? ' ' : char}
+                  {isNewline ? '↵\n' : (isSpace ? ' ' : char)}
                 </span>
               );
             })}

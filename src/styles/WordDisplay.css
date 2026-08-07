@@ -102,6 +102,11 @@
   min-width: 0.5rem;
 }
 
+.char-newline {
+  opacity: 0.6;
+  font-size: 0.85em;
+}
+
 /* Start Overlay message */
 .start-typing-overlay {
   position: absolute;

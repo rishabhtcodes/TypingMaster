@@ -107,13 +107,15 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
     // Allow shortcuts (F5, Ctrl+R, etc.)
     if (ctrlKey || metaKey) return;
 
-    // Prevent scrolling with Space
-    if (key === ' ') {
+    // Prevent default scrolling with Space or Enter
+    if (key === ' ' || key === 'Enter') {
       e.preventDefault();
     }
 
+    const inputChar = key === 'Enter' ? '\n' : key;
+
     // Initialize timer on first keypress
-    if (!isStarted && key.length === 1) {
+    if (!isStarted && (key.length === 1 || key === 'Enter')) {
       setIsStarted(true);
       startTimeRef.current = Date.now();
       setTimeLeft(testMode === 'time' ? timeLimit : 0);
@@ -128,17 +130,17 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
       return;
     }
 
-    // Only allow single characters
-    if (key.length !== 1) return;
+    // Only allow single characters or Enter
+    if (key.length !== 1 && key !== 'Enter') return;
 
     totalKeystrokesRef.current += 1;
     
     // Play clicking sound
-    const isSpace = key === ' ';
+    const isSpace = key === ' ' || key === 'Enter';
     SoundManager.playClick(false, isSpace);
 
     setInput((prev) => {
-      const nextInput = prev + key;
+      const nextInput = prev + inputChar;
       
       // Auto complete when we finish typing target text
       if (nextInput.length >= targetText.length) {

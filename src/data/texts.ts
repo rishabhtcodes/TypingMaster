@@ -17,11 +17,11 @@ export const typingTexts: TextCategory = {
     "modern keyboard layouts like Qwerty were originally designed to slow typists down so that physical typewriter keys would not jam together today alternative layouts like Colemak and Dvorak aim to minimize finger travel time and strain",
   ],
   code: [
-    "const typingSpeed = (words, minutes) => Math.round(words / minutes); export default function calculateWpm(stats) { const { correct, total, duration } = stats; return typingSpeed(correct / 5, duration / 60); }",
-    "import React, { useState, useEffect, useCallback } from 'react'; export const useTheme = () => { const [theme, setTheme] = useState('dark'); const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark'); return { theme, toggleTheme }; };",
-    "def bubble_sort(arr): n = len(arr) for i in range(n): for j in range(0, n-i-1): if arr[j] > arr[j+1]: arr[j], arr[j+1] = arr[j+1], arr[j] return arr",
-    "async function fetchData(url) { try { const response = await fetch(url); if (!response.ok) throw new Error('Network error'); const data = await response.json(); return { success: true, data }; } catch (error) { return { success: false, error: error.message }; } }",
-    "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /> <title>Ty-pex</title> <link rel=\"stylesheet\" href=\"styles.css\" /> </head> <body> <main id=\"app\"></main> </body> </html>",
+    "const typingSpeed = (words, minutes) => {\n  return Math.round(words / minutes);\n};\nexport default function calculateWpm(stats) {\n  const { correct, duration } = stats;\n  return typingSpeed(correct / 5, duration / 60);\n}",
+    "import React, { useState, useEffect } from 'react';\n\nexport const useTheme = () => {\n  const [theme, setTheme] = useState('dark');\n  const toggleTheme = () => {\n    setTheme(prev => prev === 'dark' ? 'light' : 'dark');\n  };\n  return { theme, toggleTheme };\n};",
+    "def bubble_sort(arr):\n  n = len(arr)\n  for i in range(n):\n    for j in range(0, n - i - 1):\n      if arr[j] > arr[j + 1]:\n        arr[j], arr[j + 1] = arr[j + 1], arr[j]\n  return arr",
+    "async function fetchData(url) {\n  try {\n    const response = await fetch(url);\n    if (!response.ok) throw new Error('Network error');\n    const data = await response.json();\n    return { success: true, data };\n  } catch (error) {\n    return { success: false, error: error.message };\n  }\n}",
+    "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Ty-pex</title>\n    <link rel=\"stylesheet\" href=\"styles.css\" />\n  </head>\n  <body>\n    <main id=\"app\"></main>\n  </body>\n</html>",
   ],
   quotes: [
     "The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you will know when you find it. — Steve Jobs",
