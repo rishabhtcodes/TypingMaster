@@ -85,6 +85,11 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  transition: max-width var(--transition-normal);
+}
+
+.app-viewport.coding-viewport-active {
+  max-width: 1260px;
 }
 
 .practice-screen {
@@ -93,6 +98,52 @@
   align-items: center;
   position: relative;
   width: 100%;
+}
+
+.practice-screen.coding-layout-active {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.coding-main-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.practice-center-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coding-sidebar-col {
+  width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+/* Tall Code Console box in Coding Mode */
+.coding-layout-active .code-console-mode {
+  width: 100%;
+  height: calc(100vh - 280px);
+  min-height: 480px;
+  max-height: 680px;
+  display: flex;
+  flex-direction: column;
+}
+
+.coding-layout-active .console-body-viewport {
+  flex: 1;
+  height: 100%;
+  max-height: none !important;
 }
 
 /* Live HUD overlay */

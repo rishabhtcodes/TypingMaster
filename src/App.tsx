@@ -146,72 +146,97 @@ export default function App() {
       </header>
 
       {/* 2. Main Content viewport */}
-      <main className="app-viewport">
+      <main className={`app-viewport ${category === 'code' ? 'coding-viewport-active' : ''}`}>
         {activeTab === 'dashboard' ? (
           <Dashboard onStartPractice={() => setActiveTab('practice')} />
         ) : (
-          <div className="practice-screen">
+          <div className={`practice-screen ${category === 'code' ? 'coding-layout-active' : ''}`}>
+            
+            {/* Left/Main Column */}
+            <div className={category === 'code' ? 'coding-main-col' : 'practice-center-col'}>
+              {/* Live active indicator HUD (Fades in focus mode) */}
+              <div className={`live-hud animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
+                <div className="hud-pill font-mono">
+                  <Clock size={15} className="text-muted" />
+                  <span className="hud-value">
+                    {testMode === 'time' ? `${timeLeft}s` : formatSeconds(timeLeft)}
+                  </span>
+                  <span className="hud-tag">{testMode === 'time' ? 'left' : 'time'}</span>
+                </div>
 
-            {/* Live active indicator HUD (Fades in focus mode) */}
-            <div className={`live-hud animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
-              <div className="hud-pill font-mono">
-                <Clock size={15} className="text-muted" />
-                <span className="hud-value">
-                  {testMode === 'time' ? `${timeLeft}s` : formatSeconds(timeLeft)}
-                </span>
-                <span className="hud-tag">{testMode === 'time' ? 'left' : 'time'}</span>
+                <div className="hud-pill font-mono">
+                  <Zap size={15} className="text-correct" />
+                  <span className="hud-value">{stats.wpm}</span>
+                  <span className="hud-tag">wpm</span>
+                </div>
+
+                <div className="hud-pill font-mono">
+                  <Percent size={15} className="text-warning" />
+                  <span className="hud-value">{stats.accuracy}%</span>
+                  <span className="hud-tag">accuracy</span>
+                </div>
               </div>
 
-              <div className="hud-pill font-mono">
-                <Zap size={15} className="text-correct" />
-                <span className="hud-value">{stats.wpm}</span>
-                <span className="hud-tag">wpm</span>
+              {/* The Monospace word display container */}
+              <WordDisplay
+                text={promptText}
+                input={input}
+                isStarted={isStarted}
+                category={category}
+              />
+
+              {/* Quick action bar */}
+              <div className={`action-bar animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
+                <button className="btn-restart" onClick={handleLoadNewText} title="Press Escape to restart">
+                  <RotateCw size={14} /> Reset <span className="shortcut-tag">Esc</span>
+                </button>
               </div>
 
-              <div className="hud-pill font-mono">
-                <Percent size={15} className="text-warning" />
-                <span className="hud-value">{stats.accuracy}%</span>
-                <span className="hud-tag">accuracy</span>
-              </div>
+              {category !== 'code' && (
+                <Controls
+                  mode={testMode}
+                  onModeChange={setTestMode}
+                  category={category}
+                  onCategoryChange={setCategory}
+                  timeLimit={timeLimit}
+                  onTimeLimitChange={setTimeLimit}
+                  wordLimit={wordLimit}
+                  onWordLimitChange={setWordLimit}
+                  focusMode={focusMode}
+                  onFocusModeChange={handleFocusChange}
+                  soundType={soundType}
+                  onSoundTypeChange={handleSoundChange}
+                  isStarted={isStarted}
+                />
+              )}
+
+              {/* Sleek inline tutorial tip */}
+              {!isStarted && (
+                <p className="practice-tip animate-float">
+                  <b>Developer Tip:</b> Switch sound settings to <b>quiet</b> or <b>clicky</b> switches for highly satisfying tactile audio feedback!
+                </p>
+              )}
             </div>
 
-            {/* The Monospace word display container */}
-            <WordDisplay
-              text={promptText}
-              input={input}
-              isStarted={isStarted}
-              category={category}
-            />
-
-            {/* Quick action bar */}
-            <div className={`action-bar animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
-              <button className="btn-restart" onClick={handleLoadNewText} title="Press Escape to restart">
-                <RotateCw size={14} /> Reset <span className="shortcut-tag">Esc</span>
-              </button>
-            </div>
-
-            {/* Upgraded Control presets HUD */}
-            <Controls
-              mode={testMode}
-              onModeChange={setTestMode}
-              category={category}
-              onCategoryChange={setCategory}
-              timeLimit={timeLimit}
-              onTimeLimitChange={setTimeLimit}
-              wordLimit={wordLimit}
-              onWordLimitChange={setWordLimit}
-              focusMode={focusMode}
-              onFocusModeChange={handleFocusChange}
-              soundType={soundType}
-              onSoundTypeChange={handleSoundChange}
-              isStarted={isStarted}
-            />
-
-            {/* Sleek inline tutorial tip */}
-            {!isStarted && (
-              <p className="practice-tip animate-float">
-                <b>Developer Tip:</b> Switch sound settings to <b>quiet</b> or <b>clicky</b> switches for highly satisfying tactile audio feedback!
-              </p>
+            {/* Right Column Sidebar for Code Category */}
+            {category === 'code' && (
+              <div className="coding-sidebar-col animate-float">
+                <Controls
+                  mode={testMode}
+                  onModeChange={setTestMode}
+                  category={category}
+                  onCategoryChange={setCategory}
+                  timeLimit={timeLimit}
+                  onTimeLimitChange={setTimeLimit}
+                  wordLimit={wordLimit}
+                  onWordLimitChange={setWordLimit}
+                  focusMode={focusMode}
+                  onFocusModeChange={handleFocusChange}
+                  soundType={soundType}
+                  onSoundTypeChange={handleSoundChange}
+                  isStarted={isStarted}
+                />
+              </div>
             )}
 
             {/* 3. High-Fidelity Session Completed Overlay */}
@@ -279,7 +304,6 @@ export default function App() {
                 </div>
               </div>
             )}
-
           </div>
         )}
       </main>
