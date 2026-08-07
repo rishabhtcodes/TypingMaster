@@ -10,7 +10,68 @@ export interface CodeSnippet {
 }
 
 export function findSnippetByCode(codeText: string): CodeSnippet | undefined {
-  return codeSnippets.find(s => s.code === codeText);
+  if (!codeText) return undefined;
+  const fnMatch = codeText.match(/Filename:\s*([\w.-]+)/i);
+  if (fnMatch && fnMatch[1]) {
+    const targetFile = fnMatch[1].trim().toLowerCase();
+    const found = codeSnippets.find(s => s.filename.toLowerCase() === targetFile);
+    if (found) return found;
+  }
+  const cleanPrompt = codeText.trim().replace(/\r\n/g, '\n');
+  return codeSnippets.find(s => s.code.trim().replace(/\r\n/g, '\n') === cleanPrompt);
+}
+
+export function getSampleTestCase(codeText: string): { input: string; output: string; explanation?: string } {
+  const snippet = findSnippetByCode(codeText);
+  if (snippet && snippet.sampleInput && snippet.sampleOutput) {
+    return {
+      input: snippet.sampleInput,
+      output: snippet.sampleOutput,
+      explanation: snippet.explanation,
+    };
+  }
+
+  const low = (codeText || '').toLowerCase();
+
+  if (low.includes('floyd_triangle') || low.includes('floyd')) {
+    return { input: 'rows = 4', output: '1\n2 3\n4 5 6\n7 8 9 10', explanation: "Generates Floyd's triangle sequence numbers." };
+  }
+  if (low.includes('pascal')) {
+    return { input: 'numRows = 4', output: '[[1], [1,1], [1,2,1], [1,3,3,1]]', explanation: "Generates Pascal's triangle rows." };
+  }
+  if (low.includes('pyramid') || low.includes('diamond') || low.includes('pattern') || low.includes('triangle') || low.includes('square') || low.includes('hourglass') || low.includes('butterfly')) {
+    return { input: 'rows = 4', output: '   *\n  ***\n *****\n*******', explanation: 'Generates geometric star pattern output.' };
+  }
+  if (low.includes('fibonacci') || low.includes('fib_')) {
+    return { input: 'n = 7', output: '[0, 1, 1, 2, 3, 5, 8]', explanation: 'Calculates Fibonacci sequence values.' };
+  }
+  if (low.includes('prime') || low.includes('sieve')) {
+    return { input: 'n = 29', output: 'true', explanation: 'Verifies primality of integer.' };
+  }
+  if (low.includes('binary_search') || low.includes('search') || low.includes('find')) {
+    return { input: 'arr = [1, 3, 5, 7, 9], target = 7', output: 'Index 3', explanation: 'Performs logarithmic binary search.' };
+  }
+  if (low.includes('sort')) {
+    return { input: 'arr = [5, 2, 9, 1, 7]', output: '[1, 2, 5, 7, 9]', explanation: 'Sorts array elements in ascending order.' };
+  }
+  if (low.includes('matrix') || low.includes('transpose') || low.includes('diagonal') || low.includes('rotate')) {
+    return { input: 'matrix = [[1, 2], [3, 4]]', output: '[[1, 3], [2, 4]]', explanation: 'Transposes or rotates matrix dimensions.' };
+  }
+  if (low.includes('tree') || low.includes('inorder') || low.includes('bfs') || low.includes('dfs') || low.includes('depth')) {
+    return { input: 'root = [1, null, 2, 3]', output: '[1, 3, 2]', explanation: 'Traverses binary tree nodes.' };
+  }
+  if (low.includes('linked_list') || low.includes('listnode') || low.includes('head')) {
+    return { input: 'head = 1 -> 2 -> 3 -> 4', output: '4 -> 3 -> 2 -> 1', explanation: 'Reverses or checks linked list nodes.' };
+  }
+  if (low.includes('stack') || low.includes('queue') || low.includes('parentheses')) {
+    return { input: 's = "({[]})"', output: 'true', explanation: 'Evaluates stack bracket matching.' };
+  }
+
+  return {
+    input: 'n = 5',
+    output: 'Result: OK',
+    explanation: 'Executes algorithm to produce expected results.',
+  };
 }
 
 export const codeSnippets: CodeSnippet[] = [
