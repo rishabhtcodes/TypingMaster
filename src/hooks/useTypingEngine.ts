@@ -98,29 +98,45 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
     return { wpm, rawWpm, incorrect };
   }, [targetText]);
 
+  // Helper to map Dead keys (international quotes, double-quotes, backticks, tildes)
+  const resolveDeadKey = (e: KeyboardEvent): string | null => {
+    if (e.key === 'Dead') {
+      if (e.code === 'Quote') return e.shiftKey ? '"' : "'";
+      if (e.code === 'Backquote') return e.shiftKey ? '~' : '`';
+      if (e.code === 'Digit6' && e.shiftKey) return '^';
+    }
+    return null;
+  };
+
   // Handle typing keystroke
   const handleKeystroke = useCallback((e: KeyboardEvent) => {
     if (isCompleted) return;
 
-    const { key, ctrlKey, metaKey } = e;
+    const { key, ctrlKey, metaKey, altKey } = e;
 
-    // Allow shortcuts (F5, Ctrl+R, etc.)
+    // Handle Ctrl + Backspace or Cmd + Backspace (word deletion)
+    if (key === 'Backspace' && (ctrlKey || metaKey || altKey)) {
+      e.preventDefault();
+      setInput((prev) => {
+        if (prev.length === 0) return prev;
+        SoundManager.playClick(true, false);
+        let i = prev.length - 1;
+        while (i > 0 && (prev[i - 1] === ' ' || prev[i - 1] === '\n')) i--;
+        while (i > 0 && prev[i - 1] !== ' ' && prev[i - 1] !== '\n') i--;
+        return prev.slice(0, i);
+      });
+      return;
+    }
+
+    // Allow shortcuts (F5, Ctrl+R, Ctrl+C, Ctrl+V, etc.)
     if (ctrlKey || metaKey) return;
 
-    // Prevent default scrolling with Space or Enter
-    if (key === ' ' || key === 'Enter') {
+    // Prevent default scrolling or focus loss on Space, Enter, Tab
+    if (key === ' ' || key === 'Enter' || key === 'Tab') {
       e.preventDefault();
     }
 
-    const inputChar = key === 'Enter' ? '\n' : key;
-
-    // Initialize timer on first keypress
-    if (!isStarted && (key.length === 1 || key === 'Enter')) {
-      setIsStarted(true);
-      startTimeRef.current = Date.now();
-      setTimeLeft(testMode === 'time' ? timeLimit : 0);
-    }
-
+    // Handle Backspace
     if (key === 'Backspace') {
       setInput((prev) => {
         if (prev.length === 0) return prev;
@@ -130,18 +146,70 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
       return;
     }
 
-    // Only allow single characters or Enter
-    if (key.length !== 1 && key !== 'Enter') return;
+    // Resolve input characters to insert
+    let inputCharsToInsert = '';
 
-    totalKeystrokesRef.current += 1;
+    const deadKeyChar = resolveDeadKey(e);
+    if (deadKeyChar) {
+      inputCharsToInsert = deadKeyChar;
+    } else if (key === 'Enter') {
+      // In code mode, if next line in target text has leading spaces, auto-indent
+      inputCharsToInsert = '\n';
+      const currentPos = input.length;
+      if (targetText[currentPos] === '\n') {
+        let spaceCount = 0;
+        let p = currentPos + 1;
+        while (p < targetText.length && targetText[p] === ' ') {
+          spaceCount++;
+          p++;
+        }
+        if (spaceCount > 0) {
+          inputCharsToInsert += ' '.repeat(spaceCount);
+        }
+      }
+    } else if (key === 'Tab') {
+      // Tab inserts matching leading spaces or 2 spaces
+      const currentPos = input.length;
+      let spaceCount = 0;
+      let p = currentPos;
+      while (p < targetText.length && targetText[p] === ' ') {
+        spaceCount++;
+        p++;
+      }
+      inputCharsToInsert = ' '.repeat(spaceCount > 0 ? spaceCount : 2);
+    } else if (key.length === 1) {
+      inputCharsToInsert = key;
+    } else {
+      // Ignore other non-printable key events (Shift, Alt, CapsLock, Arrow keys, etc.)
+      return;
+    }
+
+    // Initialize timer on first keypress
+    if (!isStarted) {
+      setIsStarted(true);
+      startTimeRef.current = Date.now();
+      setTimeLeft(testMode === 'time' ? timeLimit : 0);
+    }
+
+    totalKeystrokesRef.current += inputCharsToInsert.length;
     
     // Play clicking sound
-    const isSpace = key === ' ' || key === 'Enter';
-    SoundManager.playClick(false, isSpace);
+    const isSpaceOrEnter = key === ' ' || key === 'Enter' || key === 'Tab';
+    SoundManager.playClick(false, isSpaceOrEnter);
 
     setInput((prev) => {
-      const nextInput = prev + inputChar;
+      const nextInput = prev + inputCharsToInsert;
       
+      // Track struggle keys
+      for (let idx = prev.length; idx < nextInput.length; idx++) {
+        const expected = targetText[idx];
+        const actual = nextInput[idx];
+        if (expected && actual && expected !== actual) {
+          const key = expected.toUpperCase();
+          struggleKeysRef.current[key] = (struggleKeysRef.current[key] || 0) + 1;
+        }
+      }
+
       // Auto complete when we finish typing target text
       if (nextInput.length >= targetText.length) {
         setIsCompleted(true);
@@ -160,7 +228,7 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
 
       return nextInput;
     });
-  }, [isStarted, isCompleted, targetText, testMode, timeLimit]);
+  }, [isStarted, isCompleted, targetText, testMode, timeLimit, input]);
 
   // Handle live clock ticks every second
   useEffect(() => {
