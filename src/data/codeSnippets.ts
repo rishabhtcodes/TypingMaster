@@ -629,183 +629,160 @@ void decimalToBinary(int n) {
 }`
   },
 
-  // --- 3. PATTERN PRINTING & GRAPHICS ---
+  // --- 3. PATTERN PRINTING & GRAPHICS (from 10 Pattern Printing Programs) ---
   {
     id: 'pat-31',
-    title: 'Right Angle Star Triangle Pattern',
+    title: 'Right Triangle Star Pattern',
     filename: 'right_triangle_pattern.py',
     lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: '*\n**\n***\n****\n*****',
+    explanation: 'Prints a right-angled triangle pattern of stars with n rows.',
     code: `# Filename: right_triangle_pattern.py
-def print_right_triangle(rows: int):
-    for i in range(1, rows + 1):
-        line = "*" * i
-        print(line)
-
-print_right_triangle(5)`
+n = 5
+for i in range(1, n + 1):
+    for j in range(i):
+        print("*", end="")
+    print()`
   },
   {
     id: 'pat-32',
     title: 'Inverted Right Triangle Pattern',
-    filename: 'inverted_triangle.ts',
-    lang: 'TypeScript',
-    code: `// Filename: inverted_triangle.ts
-export function printInvertedTriangle(rows: number): void {
-  for (let i = rows; i >= 1; i--) {
-    let line = '';
-    for (let j = 1; j <= i; j++) {
-      line += '* ';
-    }
-    console.log(line);
-  }
-}`
+    filename: 'inverted_right_triangle.py',
+    lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: '*****\n****\n***\n**\n*',
+    explanation: 'Prints an inverted right-angled triangle pattern of stars.',
+    code: `# Filename: inverted_right_triangle.py
+n = 5
+for i in range(n, 0, -1):
+    for j in range(i):
+        print("*", end="")
+    print()`
   },
   {
     id: 'pat-33',
     title: 'Pyramid Star Pattern',
-    filename: 'pyramid_pattern.java',
-    lang: 'Java',
-    code: `// Filename: pyramid_pattern.java
-public class PyramidPattern {
-    public static void printPyramid(int n) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = i; j < n; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 1; k <= (2 * i - 1); k++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-    }
-}`
+    filename: 'pyramid_star_pattern.py',
+    lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: '    *\n   ***\n  *****\n *******\n*********',
+    explanation: 'Prints a symmetric centered pyramid star pattern.',
+    code: `# Filename: pyramid_star_pattern.py
+n = 5
+for i in range(1, n + 1):
+    print(" " * (n - i) + "*" * (2 * i - 1))`
   },
   {
     id: 'pat-34',
-    title: 'Diamond Star Pattern',
-    filename: 'diamond_pattern.cpp',
-    lang: 'C++',
-    code: `// Filename: diamond_pattern.cpp
-#include <iostream>
-
-void printDiamond(int n) {
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n - i; j++) std::cout << " ";
-        for (int k = 1; k <= 2 * i - 1; k++) std::cout << "*";
-        std::cout << "\\n";
-    }
-    for (int i = n - 1; i >= 1; i--) {
-        for (int j = 1; j <= n - i; j++) std::cout << " ";
-        for (int k = 1; k <= 2 * i - 1; k++) std::cout << "*";
-        std::cout << "\\n";
-    }
-}`
+    title: 'Inverted Pyramid Pattern',
+    filename: 'inverted_pyramid_pattern.py',
+    lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: '*********\n *******\n  *****\n   ***\n    *',
+    explanation: 'Prints an inverted centered pyramid star pattern.',
+    code: `# Filename: inverted_pyramid_pattern.py
+n = 5
+for i in range(n, 0, -1):
+    print(" " * (n - i) + "*" * (2 * i - 1))`
   },
   {
     id: 'pat-35',
-    title: 'Hollow Square Pattern',
-    filename: 'hollow_square.py',
+    title: 'Diamond Star Pattern',
+    filename: 'diamond_star_pattern.py',
     lang: 'Python',
-    code: `# Filename: hollow_square.py
-def print_hollow_square(size: int):
-    for i in range(size):
-        if i == 0 or i == size - 1:
-            print("*" * size)
-        else:
-            print("*" + " " * (size - 2) + "*")
-
-print_hollow_square(5)`
+    sampleInput: 'n = 5',
+    sampleOutput: '    *\n   ***\n  *****\n *******\n*********\n *******\n  *****\n   ***\n    *',
+    explanation: 'Combines normal and inverted pyramids to form a diamond.',
+    code: `# Filename: diamond_star_pattern.py
+n = 5
+for i in range(1, n + 1):
+    print(" " * (n - i) + "*" * (2 * i - 1))
+for i in range(n - 1, 0, -1):
+    print(" " * (n - i) + "*" * (2 * i - 1))`
   },
   {
     id: 'pat-36',
-    title: 'Floyd Triangle Number Pattern',
-    filename: 'floyd_triangle.ts',
-    lang: 'TypeScript',
-    code: `// Filename: floyd_triangle.ts
-export function printFloydTriangle(rows: number): void {
-  let num = 1;
-  for (let i = 1; i <= rows; i++) {
-    let line = '';
-    for (let j = 1; j <= i; j++) {
-      line += num + ' ';
-      num++;
-    }
-    console.log(line);
-  }
-}`
+    title: 'Hollow Square Pattern',
+    filename: 'hollow_square_pattern.py',
+    lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: '*****\n*   *\n*   *\n*   *\n*****',
+    explanation: 'Prints stars along the borders of an n x n square matrix.',
+    code: `# Filename: hollow_square_pattern.py
+n = 5
+for i in range(n):
+    for j in range(n):
+        if i == 0 or i == n - 1 or j == 0 or j == n - 1:
+            print("*", end="")
+        else:
+            print(" ", end="")
+    print()`
   },
   {
     id: 'pat-37',
-    title: 'Butterfly Star Pattern',
-    filename: 'butterfly_pattern.java',
-    lang: 'Java',
-    code: `// Filename: butterfly_pattern.java
-public class ButterflyPattern {
-    public static void printButterfly(int n) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) System.out.print("*");
-            for (int j = 1; j <= 2 * (n - i); j++) System.out.print(" ");
-            for (int j = 1; j <= i; j++) System.out.print("*");
-            System.out.println();
-        }
-        for (int i = n; i >= 1; i--) {
-            for (int j = 1; j <= i; j++) System.out.print("*");
-            for (int j = 1; j <= 2 * (n - i); j++) System.out.print(" ");
-            for (int j = 1; j <= i; j++) System.out.print("*");
-            System.out.println();
-        }
-    }
-}`
+    title: 'Number Triangle Pattern',
+    filename: 'number_triangle_pattern.py',
+    lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: '1\n12\n123\n1234\n12345',
+    explanation: 'Prints increasing numbers in right triangle layout.',
+    code: `# Filename: number_triangle_pattern.py
+n = 5
+for i in range(1, n + 1):
+    for j in range(1, i + 1):
+        print(j, end="")
+    print()`
   },
   {
     id: 'pat-38',
-    title: 'Hourglass Star Pattern',
-    filename: 'hourglass_pattern.py',
+    title: "Floyd's Triangle Pattern",
+    filename: 'floyds_triangle_pattern.py',
     lang: 'Python',
-    code: `# Filename: hourglass_pattern.py
-def print_hourglass(n: int):
-    for i in range(n, 0, -1):
-        spaces = " " * (n - i)
-        stars = "*" * (2 * i - 1)
-        print(spaces + stars)
-    for i in range(2, n + 1):
-        spaces = " " * (n - i)
-        stars = "*" * (2 * i - 1)
-        print(spaces + stars)`
+    sampleInput: 'n = 4',
+    sampleOutput: '1 \n2 3 \n4 5 6 \n7 8 9 10',
+    explanation: "Prints consecutive natural numbers in right triangle form.",
+    code: `# Filename: floyds_triangle_pattern.py
+n = 4
+num = 1
+for i in range(1, n + 1):
+    for j in range(i):
+        print(num, end=" ")
+        num += 1
+    print()`
   },
   {
     id: 'pat-39',
-    title: 'Number Pyramid Pattern',
-    filename: 'number_pyramid.ts',
-    lang: 'TypeScript',
-    code: `// Filename: number_pyramid.ts
-export function printNumberPyramid(rows: number): void {
-  for (let i = 1; i <= rows; i++) {
-    let line = ' '.repeat(rows - i);
-    for (let j = 1; j <= i; j++) {
-      line += i + ' ';
-    }
-    console.log(line);
-  }
-}`
+    title: 'Alphabet Triangle Pattern',
+    filename: 'alphabet_triangle_pattern.py',
+    lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: 'A\nAB\nABC\nABCD\nABCDE',
+    explanation: 'Prints consecutive ASCII letters in right triangle layout.',
+    code: `# Filename: alphabet_triangle_pattern.py
+n = 5
+for i in range(1, n + 1):
+    for j in range(i):
+        print(chr(65 + j), end="")
+    print()`
   },
   {
     id: 'pat-40',
-    title: 'Binary Alternating Pattern',
-    filename: 'binary_pattern.c',
-    lang: 'C',
-    code: `// Filename: binary_pattern.c
-#include <stdio.h>
-
-void printBinaryPattern(int n) {
-    for (int i = 1; i <= n; i++) {
-        int val = (i % 2 == 0) ? 0 : 1;
-        for (int j = 1; j <= i; j++) {
-            printf("%d ", val);
-            val = 1 - val;
-        }
-        printf("\\n");
-    }
-}`
+    title: '0-1 Triangle Pattern',
+    filename: 'binary_01_triangle_pattern.py',
+    lang: 'Python',
+    sampleInput: 'n = 5',
+    sampleOutput: '1\n01\n101\n0101\n10101',
+    explanation: 'Prints alternating binary digits (1 and 0) based on (i+j)%2.',
+    code: `# Filename: binary_01_triangle_pattern.py
+n = 5
+for i in range(1, n + 1):
+    for j in range(i):
+        if (i + j) % 2 == 0:
+            print(1, end="")
+        else:
+            print(0, end="")
+    print()`
   },
 
   // --- 4. DATA STRUCTURES & SEARCHING/SORTING ALGORITHMS ---
