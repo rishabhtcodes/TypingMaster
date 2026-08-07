@@ -11,13 +11,16 @@
 
 /* Focused fade out transition */
 .hud-faded {
-  opacity: 0.05;
+  opacity: 0.15;
+  filter: blur(4px);
   pointer-events: none;
-  transform: translateY(10px);
+  transform: translateY(4px);
+  transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
 }
 
 .hud-faded:hover {
-  opacity: 0.8;
+  opacity: 0.95;
+  filter: blur(0);
   pointer-events: auto;
   transform: translateY(0);
 }

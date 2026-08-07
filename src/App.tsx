@@ -119,7 +119,7 @@ export default function App() {
     <div className={`app-shell ${isStarted ? 'typing-active' : ''}`}>
 
       {/* 1. Integrated Premium Top Navigation Bar */}
-      <header className="app-header glass-panel">
+      <header className={`app-header glass-panel ${isStarted && focusMode ? 'hud-faded' : ''}`}>
         <div className="header-logo" onClick={() => { setActiveTab('practice'); reset(); }}>
           <img src="/logo.png" className="logo-image" alt="Ty-pex Logo" />
           <h1>Ty-pex </h1>

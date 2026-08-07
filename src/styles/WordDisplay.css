@@ -107,26 +107,28 @@
   font-size: 0.85em;
 }
 
-/* Start Overlay message */
+/* Start Overlay message pill */
 .start-typing-overlay {
   position: absolute;
-  inset: 0;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: color-mix(in srgb, var(--bg-surface) 80%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  font-size: 1.25rem;
+  background-color: var(--bg-surface-glass);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 1rem;
+  border-radius: 30px;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary-color);
-  text-shadow: 0 0 10px var(--primary-glow);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   opacity: 1;
   visibility: visible;
   pointer-events: none;
   z-index: 10;
-  transform: scale(1);
   transition: opacity var(--transition-normal), transform var(--transition-normal), visibility var(--transition-normal);
 }
 

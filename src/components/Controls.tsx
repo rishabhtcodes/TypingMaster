@@ -108,77 +108,79 @@ export default function Controls({
 
       <div className="divider-horizontal"></div>
 
-      {/* 2. Mode and Limits */}
       <div className="control-row">
-        
-        {/* Mode Selector */}
-        <div className="control-section">
-          <span className="section-label">Mode</span>
-          <div className="button-group">
-            <button 
-              className={`btn-control btn-icon-text ${mode === 'time' ? 'active' : ''}`}
-              onClick={() => onModeChange('time')}
-            >
-              <Clock size={14} /> Time
-            </button>
-            <button 
-              className={`btn-control btn-icon-text ${mode === 'words' ? 'active' : ''}`}
-              onClick={() => onModeChange('words')}
-            >
-              <AlignLeft size={14} /> Words
-            </button>
-            <button 
-              className={`btn-control btn-icon-text ${mode === 'zen' ? 'active' : ''}`}
-              onClick={() => onModeChange('zen')}
-            >
-              <InfIcon size={14} /> Zen
-            </button>
-          </div>
-        </div>
-
-        {/* Dynamic Limits panel based on mode */}
-        {mode === 'time' && (
-          <div className="control-section animate-float">
-            <span className="section-label">Duration</span>
-            <div className="button-group">
-              {[15, 30, 60, 120].map((t) => (
-                <button
-                  key={t}
-                  className={`btn-control font-mono ${timeLimit === t ? 'active' : ''}`}
-                  onClick={() => onTimeLimitChange(t)}
+        {/* 2. Mode and Limits (Hidden in Coding mode) */}
+        {category !== 'code' && (
+          <>
+            <div className="control-section">
+              <span className="section-label">Mode</span>
+              <div className="button-group">
+                <button 
+                  className={`btn-control btn-icon-text ${mode === 'time' ? 'active' : ''}`}
+                  onClick={() => onModeChange('time')}
                 >
-                  {t}s
+                  <Clock size={14} /> Time
                 </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {mode === 'words' && (
-          <div className="control-section animate-float">
-            <span className="section-label">Words Count</span>
-            <div className="button-group">
-              {[10, 25, 50, 100].map((w) => (
-                <button
-                  key={w}
-                  className={`btn-control font-mono ${wordLimit === w ? 'active' : ''}`}
-                  onClick={() => onWordLimitChange(w)}
+                <button 
+                  className={`btn-control btn-icon-text ${mode === 'words' ? 'active' : ''}`}
+                  onClick={() => onModeChange('words')}
                 >
-                  {w}
+                  <AlignLeft size={14} /> Words
                 </button>
-              ))}
+                <button 
+                  className={`btn-control btn-icon-text ${mode === 'zen' ? 'active' : ''}`}
+                  onClick={() => onModeChange('zen')}
+                >
+                  <InfIcon size={14} /> Zen
+                </button>
+              </div>
             </div>
-          </div>
-        )}
 
-        {mode === 'zen' && (
-          <div className="control-section animate-float info-zen">
-            <Sparkles size={14} className="text-correct" />
-            <span className="zen-caption">No timers, no limits. Clear your mind and practice speed.</span>
-          </div>
-        )}
+            {/* Dynamic Limits panel based on mode */}
+            {mode === 'time' && (
+              <div className="control-section animate-float">
+                <span className="section-label">Duration</span>
+                <div className="button-group">
+                  {[15, 30, 60, 120].map((t) => (
+                    <button
+                      key={t}
+                      className={`btn-control font-mono ${timeLimit === t ? 'active' : ''}`}
+                      onClick={() => onTimeLimitChange(t)}
+                    >
+                      {t}s
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
-        <div className="divider-vertical hide-mobile"></div>
+            {mode === 'words' && (
+              <div className="control-section animate-float">
+                <span className="section-label">Words Count</span>
+                <div className="button-group">
+                  {[10, 25, 50, 100].map((w) => (
+                    <button
+                      key={w}
+                      className={`btn-control font-mono ${wordLimit === w ? 'active' : ''}`}
+                      onClick={() => onWordLimitChange(w)}
+                    >
+                      {w}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {mode === 'zen' && (
+              <div className="control-section animate-float info-zen">
+                <Sparkles size={14} className="text-correct" />
+                <span className="zen-caption">No timers, no limits. Clear your mind and practice speed.</span>
+              </div>
+            )}
+
+            <div className="divider-vertical hide-mobile"></div>
+          </>
+        )}
 
         {/* 3. Audio & Focus Utility Toggles */}
         <div className="control-section">
