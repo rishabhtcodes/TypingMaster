@@ -112,10 +112,12 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
   const handleKeystroke = useCallback((e: KeyboardEvent) => {
     if (isCompleted) return;
 
-    const { key, ctrlKey, metaKey, altKey } = e;
+    const key = e.key;
+    const code = e.code;
+    const { ctrlKey, metaKey, altKey } = e;
 
     // Handle Ctrl + Backspace or Cmd + Backspace (word deletion)
-    if (key === 'Backspace' && (ctrlKey || metaKey || altKey)) {
+    if ((key === 'Backspace' || code === 'Backspace') && (ctrlKey || metaKey || altKey)) {
       e.preventDefault();
       setInput((prev) => {
         if (prev.length === 0) return prev;
@@ -132,12 +134,12 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
     if (ctrlKey || metaKey) return;
 
     // Prevent default scrolling or focus loss on Space, Enter, Tab
-    if (key === ' ' || key === 'Enter' || key === 'Tab') {
+    if (key === ' ' || key === 'Enter' || key === 'Tab' || code === 'Space' || code === 'Enter' || code === 'Tab') {
       e.preventDefault();
     }
 
     // Handle Backspace
-    if (key === 'Backspace') {
+    if (key === 'Backspace' || code === 'Backspace') {
       setInput((prev) => {
         if (prev.length === 0) return prev;
         SoundManager.playClick(true, false);
@@ -179,6 +181,10 @@ export const useTypingEngine = (targetText: string, testMode: 'time' | 'words' |
       inputCharsToInsert = ' '.repeat(spaceCount > 0 ? spaceCount : 2);
     } else if (key.length === 1) {
       inputCharsToInsert = key;
+    } else if (e.code && e.code.startsWith('Key')) {
+      // Fallback for key events where e.key is overridden or empty (e.g. KeyA, KeyS, KeyD)
+      const letter = e.code.slice(3);
+      inputCharsToInsert = e.shiftKey ? letter.toUpperCase() : letter.toLowerCase();
     } else {
       // Ignore other non-printable key events (Shift, Alt, CapsLock, Arrow keys, etc.)
       return;
