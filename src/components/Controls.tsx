@@ -59,45 +59,59 @@ export default function Controls({
       <div className="control-section">
         <span className="section-label">Category</span>
         <div className="button-group">
-          <button 
+          <button
+            type="button"
+            tabIndex={-1}
             className={`btn-control ${category === 'english' ? 'active' : ''}`}
             onClick={() => onCategoryChange('english')}
           >
             English
           </button>
-          <button 
+          <button
+            type="button"
+            tabIndex={-1}
             className={`btn-control ${category === 'code' ? 'active' : ''}`}
             onClick={() => onCategoryChange('code')}
           >
             Coding
           </button>
-          <button 
+          <button
+            type="button"
+            tabIndex={-1}
             className={`btn-control ${category === 'quotes' ? 'active' : ''}`}
             onClick={() => onCategoryChange('quotes')}
           >
             Quotes
           </button>
           <div className="divider-vertical"></div>
-          <button 
+          <button
+            type="button"
+            tabIndex={-1}
             className={`btn-control ${category === 'homeRow' ? 'active' : ''}`}
             onClick={() => onCategoryChange('homeRow')}
             title="Home Row training: asdfghjkl"
           >
             Home Row
           </button>
-          <button 
+          <button
+            type="button"
+            tabIndex={-1}
             className={`btn-control ${category === 'topRow' ? 'active' : ''}`}
             onClick={() => onCategoryChange('topRow')}
           >
             Top Row
           </button>
-          <button 
+          <button
+            type="button"
+            tabIndex={-1}
             className={`btn-control ${category === 'bottomRow' ? 'active' : ''}`}
             onClick={() => onCategoryChange('bottomRow')}
           >
             Bottom Row
           </button>
-          <button 
+          <button
+            type="button"
+            tabIndex={-1}
             className={`btn-control ${category === 'numberRow' ? 'active' : ''}`}
             onClick={() => onCategoryChange('numberRow')}
           >
@@ -115,19 +129,25 @@ export default function Controls({
             <div className="control-section">
               <span className="section-label">Mode</span>
               <div className="button-group">
-                <button 
+                <button
+                  type="button"
+                  tabIndex={-1}
                   className={`btn-control btn-icon-text ${mode === 'time' ? 'active' : ''}`}
                   onClick={() => onModeChange('time')}
                 >
                   <Clock size={14} /> Time
                 </button>
-                <button 
+                <button
+                  type="button"
+                  tabIndex={-1}
                   className={`btn-control btn-icon-text ${mode === 'words' ? 'active' : ''}`}
                   onClick={() => onModeChange('words')}
                 >
                   <AlignLeft size={14} /> Words
                 </button>
-                <button 
+                <button
+                  type="button"
+                  tabIndex={-1}
                   className={`btn-control btn-icon-text ${mode === 'zen' ? 'active' : ''}`}
                   onClick={() => onModeChange('zen')}
                 >
@@ -144,6 +164,8 @@ export default function Controls({
                   {[15, 30, 60, 120].map((t) => (
                     <button
                       key={t}
+                      type="button"
+                      tabIndex={-1}
                       className={`btn-control font-mono ${timeLimit === t ? 'active' : ''}`}
                       onClick={() => onTimeLimitChange(t)}
                     >
@@ -161,6 +183,8 @@ export default function Controls({
                   {[10, 25, 50, 100].map((w) => (
                     <button
                       key={w}
+                      type="button"
+                      tabIndex={-1}
                       className={`btn-control font-mono ${wordLimit === w ? 'active' : ''}`}
                       onClick={() => onWordLimitChange(w)}
                     >
@@ -188,7 +212,9 @@ export default function Controls({
           <div className="button-group">
             {/* Audio Mode Selectors */}
             <div className="audio-control-wrap">
-              <button 
+              <button
+                type="button"
+                tabIndex={-1}
                 className={`btn-control btn-icon-text ${soundType !== 'mute' ? 'active' : ''}`}
                 onClick={() => handleSoundChange(soundType === 'mute' ? 'clicky' : 'mute')}
                 title="Toggle Mechanical Audio feedback"
@@ -213,7 +239,9 @@ export default function Controls({
             </div>
 
             {/* Focus Mode Toggle */}
-            <button 
+            <button
+              type="button"
+              tabIndex={-1}
               className={`btn-control btn-icon-text ${focusMode ? 'active' : ''}`}
               onClick={() => onFocusModeChange(!focusMode)}
               title="Zen Mode: hides stats & details while typing"

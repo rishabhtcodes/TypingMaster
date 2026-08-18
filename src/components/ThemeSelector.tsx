@@ -42,8 +42,10 @@ export default function ThemeSelector({ currentTheme, onThemeChange }: ThemeSele
 
   return (
     <div className="theme-selector-container">
-      <button 
-        className="btn-theme-trigger" 
+      <button
+        type="button"
+        tabIndex={-1}
+        className="btn-theme-trigger"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -64,6 +66,8 @@ export default function ThemeSelector({ currentTheme, onThemeChange }: ThemeSele
               {themesList.map((theme) => (
                 <button
                   key={theme.id}
+                  type="button"
+                  tabIndex={-1}
                   className={`theme-option ${theme.id === currentTheme ? 'selected' : ''}`}
                   onClick={() => {
                     onThemeChange(theme.id);

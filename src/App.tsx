@@ -133,12 +133,16 @@ export default function App() {
 
         <nav className="header-nav">
           <button
+            type="button"
+            tabIndex={-1}
             className={`btn-nav-tab ${activeTab === 'practice' ? 'active' : ''}`}
             onClick={() => setActiveTab('practice')}
           >
             <Play size={14} /> Practice
           </button>
           <button
+            type="button"
+            tabIndex={-1}
             className={`btn-nav-tab ${activeTab === 'dashboard' ? 'active' : ''}`}
             onClick={() => setActiveTab('dashboard')}
           >
@@ -194,7 +198,7 @@ export default function App() {
 
               {/* Quick action bar */}
               <div className={`action-bar animate-float ${isStarted && focusMode ? 'hud-faded' : ''}`}>
-                <button className="btn-restart" onClick={handleLoadNewText} title="Press Escape to restart">
+                <button type="button" tabIndex={-1} className="btn-restart" onClick={handleLoadNewText} title="Press Escape to restart">
                   <RotateCw size={14} /> Reset <span className="shortcut-tag">Esc</span>
                 </button>
               </div>
@@ -332,10 +336,10 @@ export default function App() {
                 )}
 
                 <div className="results-actions">
-                  <button className="primary" onClick={handleLoadNewText}>
+                  <button type="button" tabIndex={-1} className="primary" onClick={handleLoadNewText}>
                     <RotateCw size={16} /> Next Practice Run
                   </button>
-                  <button onClick={() => { setActiveTab('dashboard'); reset(); }}>
+                  <button type="button" tabIndex={-1} onClick={() => { setActiveTab('dashboard'); reset(); }}>
                     <BarChart2 size={16} /> View Lifetime Stats
                   </button>
                 </div>
